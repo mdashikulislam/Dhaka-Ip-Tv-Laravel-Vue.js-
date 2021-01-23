@@ -134,8 +134,8 @@
             class="video-js"
             controls
             preload="auto"
-            width="1350"
-            height="720"
+            width="750"
+            height="250"
             poster="https://s6.gifyu.com/images/image27cfa7002786c232.png"
             data-setup="{}">
             <source src="https://tempx.jagobd.com:441/c5V6mmMyX7RpbEU9Mi8xNy8yMDEOGIDU6RgzQ6NTAgdEoaeFzbF92YWxIZTO0U0ezN1IzMyfvcGVMZEJCTEFWeVN3PT0mdFsaWRtaW51aiPhnPTI/anandatv.stream/chunks.m3u8" type="application/x-mpegURL" />
