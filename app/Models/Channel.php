@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ChannelCategory extends Model
+class Channel extends Model
 {
     use HasFactory;
-    public function channel()
+
+    public function channelCategories()
     {
-        return $this->belongsToMany(Channel::class,'channel_categories_channels');
+        return $this->belongsToMany(ChannelCategory::class,'channel_categories_channels');
     }
 }

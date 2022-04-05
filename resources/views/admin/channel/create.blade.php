@@ -66,6 +66,19 @@
                                 <option {{old('status') == 'Inactive'? 'selected':''}} value="Inactive">Inactive</option>
                             </select>
                         </div>
+                    <hr>
+                    <div class="form-group">
+                        <label class="label">Seo Title</label>
+                        <input type="text" class="form-control" name="seo_title" value="{{old('seo_title')}}">
+                    </div>
+                    <div class="form-group">
+                        <label class="label">Seo Keyword</label>
+                        <input type="text" class="form-control" name="seo_keyword" value="{{old('seo_keyword')}}">
+                    </div>
+                    <div class="form-group">
+                        <label class="label">Seo Description</label>
+                        <textarea name="seo_description" class="form-control">{{old('seo_description')}}</textarea>
+                    </div>
                     <!-- /.box-body -->
 
                     <div class="box-footer">
@@ -152,7 +165,7 @@
                     $('#preview_append').empty();
                     $('#preview_append').append('<div class="form-group">\n' +
                     '    <label for="preview_file">Choose Preview Logo :</label>\n' +
-                    '    <input type="file" class="form-control" id="preview_file" name="preview_file" >\n' +
+                    '    <input type="file" class="form-control-file" id="preview_file" name="preview_file" >\n' +
                     '    </div>');
                 }else if (previewValue === 'Url'){
                     $('#preview_append').empty();
