@@ -19,7 +19,14 @@ class ChannelController extends Controller implements BesicCRUD
 
     public function store(Request $request)
     {
-        // TODO: Implement store() method.
+        $this->validate($request,[
+           'title'=>['required','max:255'],
+           'slug'=>['required','max:255','unique:channels'],
+           'media_url'=>['required','max:255'],
+           'description'=>['required','max:255'],
+           'logo_type'=>['required']
+        ]);
+        return $request->all();
     }
 
     public function show($id)

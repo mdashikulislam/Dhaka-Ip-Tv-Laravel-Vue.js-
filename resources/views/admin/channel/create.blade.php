@@ -9,12 +9,15 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="" method="post" enctype="multipart/form-data">
+            <form role="form" action="{{route('channel.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="box-body">
                     <div class="form-group">
                         <label for="title">Channel Title :</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Channel Title" value="{{old('title')}}">
+                        <input type="text" class="form-control @error('title') has-error @enderror" id="title" name="title" placeholder="Channel Title" value="{{old('title')}}">
+                        @error('title')
+                            <span class="d-block invalid-feedback" role="alert">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="form-group has-success">
                         <div class="input-group ">
@@ -24,7 +27,7 @@
                     </div>
                     <div class="form-group">
                         <label for="preview_type">Preview Logo Type :</label>
-                        <select id="preview_type" class="form-control">
+                        <select id="preview_type" class="form-control" name="logo_type">
                             <option value="Url" selected>Url</option>
                             <option value="Choose File">Choose File</option>
                         </select>
@@ -32,7 +35,7 @@
                     <div id="preview_append">
                         <div class="form-group">
                             <label for="preview_url">Preview Logo Url :</label>
-                            <input type="text" class="form-control" id="preview_url" name="preview_url" placeholder="Preview Url">
+                            <input type="text" class="form-control" id="preview_url" name="preview_url" placeholder="Preview Url" value="{{old('preview_url')}}">
                         </div>
                     </div>
                     <div class="form-group">
@@ -41,13 +44,20 @@
                     </div>
                     <div class="form-group">
                         <label for="channel_type">Channel Type :  </label>
-                        <select id="channel_type" class="form-control" name="channel_type">
-                            <?php echo channelTypeDropdown();?>
+                        <select id="channel_type" class="form-control select2" multiple="multiple" name="channel_type[]">
+                            {!! channelTypeDropdown(old('channel_type')) !!}
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="editor1">Description :</label>
-                        <textarea id="editor1" name="description" rows="10" cols="80"></textarea>
+                        <textarea id="editor1" name="description" rows="10" cols="80">{{old('description')}}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select name="status" id="status" class="form-control">
+                            <option {{old('status') == 'Active'? 'selected':''}} value="Active">Active</option>
+                            <option {{old('status') == 'Inactive'? 'selected':''}} value="Inactive">Inactive</option>
+                        </select>
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -112,13 +122,16 @@
         }
     </style>
 @endsection
-@section('css')
-    <link href="{{asset('backend/mediaplayer/video-js.css?'.time())}}" rel="stylesheet" />
-@endsection
-@section('js')
-    <script src="{{asset('backend/mediaplayer/video.min.js?'.time())}}"></script>
-    <script src="{{asset('backend/bower_components/ckeditor/ckeditor.js')}}"></script>
+@push('css')
+    <link href="{{asset('backend/mediaplayer/video-js.css?t='.time())}}" rel="stylesheet" />
+    <link href="{{asset('backend/bower_components/select2/dist/css/select2.css?t='.time())}}" rel="stylesheet" />
+@endpush
+@push('js')
+    <script src="{{asset('backend/mediaplayer/video.min.js?t='.time())}}"></script>
+    <script src="{{asset('backend/bower_components/ckeditor/ckeditor.js?t='.time())}}"></script>
+    <script src="{{asset('backend/bower_components/select2/dist/js/select2.js?t='.time())}}"></script>
     <script type="text/javascript">
+        $('.select2').select2();
         $(document).ready(function (){
             CKEDITOR.replace('editor1');
             $(document).on('change','#preview_type',function (){
@@ -181,5 +194,6 @@
                 }
             });
         });
+
     </script>
-@endsection
+@endpush

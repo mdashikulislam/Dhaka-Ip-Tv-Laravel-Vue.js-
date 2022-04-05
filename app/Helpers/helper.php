@@ -1,17 +1,12 @@
 <?php
 
-function channelTypeDropdown($selected = 0){
-    $status = [
-        '0' =>'Select One',
-        'Bangla' =>'Bangla',
-        'Indian Bangla' =>'Indian Bangla',
-        'Documentary' =>'Documentary',
-    ];
-     $row = "";
-    foreach ($status as $key => $value){
-        $row .= '<option value="'.$key.'"';
-        $row .=($selected === $key) ? 'selected' : '';
-        $row .= '>'.$value.'</option>';
+function channelTypeDropdown($selected = []){
+    $categories = \App\Models\ChannelCategory::where('status','Active')->get();
+    $row = "";
+    if ($categories->isNotEmpty()){
+        foreach ($categories as $key => $value){
+            $row .= "<option>$value->name</option>";
+        }
     }
     return $row;
 }
