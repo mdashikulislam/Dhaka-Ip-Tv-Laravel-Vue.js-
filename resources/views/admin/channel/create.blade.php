@@ -1,108 +1,116 @@
 @extends('admin.layouts.app')
-@section('main-content')
-    <!-- left column -->
-    <div class="col-md-9">
-        <!-- general form elements -->
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title">Add New Channel</h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form role="form" action="{{route('channel.store')}}" method="post" enctype="multipart/form-data">
-                @csrf
-                <div class="box-body">
-                    <div class="form-group">
-                        <label for="title">Channel Title :</label>
-                        <input type="text" class="form-control @error('title') has-error @enderror" id="title" name="title" placeholder="Channel Title" value="{{old('title')}}">
-                        @error('title')
-                            <span class="d-block invalid-feedback" role="alert">{{$message}}</span>
-                        @enderror
-                    </div>
-                    <div class="form-group has-success">
-                        <div class="input-group ">
-                            <span class="input-group-addon"><i class="fa fa-globe fa-fw" style="font-size: 18px;"></i></span>
-                            <input type="text" class="form-control" id="slug" name="slug" placeholder="Channel Slug" value="{{old('slug')}}">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="preview_type">Preview Logo Type :</label>
-                        <select id="preview_type" class="form-control" name="logo_type">
-                            <option value="Url" selected>Url</option>
-                            <option value="Choose File">Choose File</option>
-                        </select>
-                    </div>
-                    <div id="preview_append">
+@section('content-title')
+    Create Channel
+@endsection
+@section('content')
+    <div class="row">
+        <div class="col-md-9">
+            <!-- general form elements -->
+            <div class="card">
+                <div class="card-body">
+                <form role="form" action="{{route('channel.store')}}" method="post" enctype="multipart/form-data">
+                    @csrf
                         <div class="form-group">
-                            <label for="preview_url">Preview Logo Url :</label>
-                            <input type="text" class="form-control" id="preview_url" name="preview_url" placeholder="Preview Url" value="{{old('preview_url')}}">
+                            <label for="title">Channel Title :</label>
+                            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" placeholder="Channel Title" value="{{old('title')}}">
+                            @error('title')
+                                <span class="d-block invalid-feedback" role="alert">{{$message}}</span>
+                            @enderror
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="media_url">Media Url :</label>
-                        <input type="text" class="form-control" id="media_url" name="media_url" placeholder="Media Url" value="{{old('media_url')}}">
-                    </div>
-                    <div class="form-group">
-                        <label for="channel_type">Channel Type :  </label>
-                        <select id="channel_type" class="form-control select2" multiple="multiple" name="channel_type[]">
-                            {!! channelTypeDropdown(old('channel_type')) !!}
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="editor1">Description :</label>
-                        <textarea id="editor1" name="description" rows="10" cols="80">{{old('description')}}</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="status">Status</label>
-                        <select name="status" id="status" class="form-control">
-                            <option {{old('status') == 'Active'? 'selected':''}} value="Active">Active</option>
-                            <option {{old('status') == 'Inactive'? 'selected':''}} value="Inactive">Inactive</option>
-                        </select>
-                    </div>
-                </div>
-                <!-- /.box-body -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-globe fa-fw" style="font-size: 18px;"></i></span>
+                            </div>
+                            <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" placeholder="Channel Slug" value="{{old('slug')}}">
+                            @error('slug')
+                            <span class="d-block invalid-feedback" role="alert">{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="preview_type">Preview Logo Type :</label>
+                            <select id="preview_type" class="form-control" name="logo_type">
+                                <option value="Url" selected>Url</option>
+                                <option value="Choose File">Choose File</option>
+                            </select>
+                        </div>
+                        <div id="preview_append">
+                            <div class="form-group">
+                                <label for="preview_url">Preview Logo Url :</label>
+                                <input type="text" class="form-control" id="preview_url" name="preview_url" placeholder="Preview Url" value="{{old('preview_url')}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="media_url">Media Url :</label>
+                            <input type="text" class="form-control @error('media_url') is-invalid @enderror" id="media_url" name="media_url" placeholder="Media Url" value="{{old('media_url')}}">
+                            @error('media_url')
+                            <span class="d-block invalid-feedback" role="alert">{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="channel_type">Channel Type :  </label>
+                            <select id="channel_type" class="form-control select2" multiple="multiple" name="channel_type[]">
+                                {!! channelTypeDropdown(old('channel_type')) !!}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="editor1">Description :</label>
+                            <textarea id="editor1" name="description" rows="10" cols="80">{{old('description')}}</textarea>
+                            @error('description')
+                            <span class="d-block invalid-feedback" role="alert">{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <select name="status" id="status" class="form-control">
+                                <option {{old('status') == 'Active'? 'selected':''}} value="Active">Active</option>
+                                <option {{old('status') == 'Inactive'? 'selected':''}} value="Inactive">Inactive</option>
+                            </select>
+                        </div>
+                    <!-- /.box-body -->
 
-                <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </form>
                 </div>
-            </form>
+            </div>
+            <!-- /.box -->
         </div>
-        <!-- /.box -->
-    </div>
-    <div class="col-md-3">
-        <div class="box box-info">
-            <div class="box-header with-border text-center">
-                <h3 class="box-title "><strong>Preview Channel Icon</strong></h3>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title "><strong>Preview Channel Icon</strong></h3>
+                </div>
+                <div class="card-body box-img">
+                    <img src="https://via.placeholder.com/224.png" id="checkImage" style="width: 100%;height: auto">
+                    <img src="{{asset('backend/inc/img-spineer.gif')}}">
+                </div>
             </div>
-            <div class="box-body box-img">
-                <img src="https://via.placeholder.com/224.png" id="checkImage" style="width: 100%;height: auto">
-                <img src="{{asset('backend/inc/img-spineer.gif')}}">
-            </div>
-        </div>
-        <div class="box box-danger">
-            <div class="box-header with-border text-center">
-                <h3 class="box-title "><strong>Preview Media</strong></h3>
-            </div>
-            <div class="box-body vdo-box">
-                <video
-                    id="my-video"
-                    class="video-js vjs-big-play-centered"
-                    controls
-                    preload="auto"
-                    width="230"
-                    height="120"
-                    poster="https://via.placeholder.com/230x120.png"
-                    data-setup="{}">
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h3 class="card-title "><strong>Preview Media</strong></h3>
+                </div>
+                <div class="card-body">
+                    <video
+                        id="my-video"
+                        class="video-js vjs-big-play-centered"
+                        controls
+                        preload="auto"
+                        width="230"
+                        height="120"
+                        poster="https://via.placeholder.com/230x120.png"
+                        data-setup="{}">
                         {{--     Default media url :  https://d2zihajmogu5jn.cloudfront.net/advanced-fmp4/master.m3u8     --}}
-                    <source src="https://d2zihajmogu5jn.cloudfront.net/advanced-fmp4/master.m3u8" type="application/x-mpegURL" />
-                    <p class="vjs-no-js">
-                        To view this video please enable JavaScript, and consider upgrading to a
-                        web browser that
-                        <a href="https://videojs.com/html5-video-support/" target="_blank"
-                        >supports HTML5 video</a
-                        >
-                    </p>
-                </video>
+                        <source src="https://d2zihajmogu5jn.cloudfront.net/advanced-fmp4/master.m3u8" type="application/x-mpegURL" />
+                        <p class="vjs-no-js">
+                            To view this video please enable JavaScript, and consider upgrading to a
+                            web browser that
+                            <a href="https://videojs.com/html5-video-support/" target="_blank"
+                            >supports HTML5 video</a
+                            >
+                        </p>
+                    </video>
+                </div>
             </div>
         </div>
     </div>
@@ -124,16 +132,20 @@
 @endsection
 @push('css')
     <link href="{{asset('backend/mediaplayer/video-js.css?t='.time())}}" rel="stylesheet" />
-    <link href="{{asset('backend/bower_components/select2/dist/css/select2.css?t='.time())}}" rel="stylesheet" />
+    <link href="{{asset('backend/plugins/select2/css/select2.css?t='.time())}}" rel="stylesheet" />
+    <link href="{{asset('backend/plugins/summernote/summernote-bs4.min.css?t='.time())}}" rel="stylesheet" />
 @endpush
 @push('js')
     <script src="{{asset('backend/mediaplayer/video.min.js?t='.time())}}"></script>
-    <script src="{{asset('backend/bower_components/ckeditor/ckeditor.js?t='.time())}}"></script>
-    <script src="{{asset('backend/bower_components/select2/dist/js/select2.js?t='.time())}}"></script>
+    <script src="{{asset('backend/plugins/summernote/summernote-bs4.min.js?t='.time())}}"></script>
+    <script src="{{asset('backend/plugins/select2/js/select2.js?t='.time())}}"></script>
     <script type="text/javascript">
         $('.select2').select2();
         $(document).ready(function (){
-            CKEDITOR.replace('editor1');
+            $('#editor1').summernote({
+                height: 300,
+                focus: true
+            });
             $(document).on('change','#preview_type',function (){
                 var previewValue = $(this).val();
                 if (previewValue === 'Choose File'){
