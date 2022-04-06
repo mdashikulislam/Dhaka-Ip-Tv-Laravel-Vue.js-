@@ -18,7 +18,7 @@ class ChannelController extends Controller implements BesicCRUD
             return DataTables::of($channels)
                 ->addColumn('action', function($data){
                     $html = '<div class="btn-group" role="group" aria-label="Basic example">';
-                    $html .='<a href="#" class="btn btn-info edit"><i class="fa fa-edit"></i></a>';
+                    $html .='<a href="'.route('channel.edit',['id'=>$data->id]).'" class="btn btn-info edit"><i class="fa fa-edit"></i></a>';
                     $html .='<a href="#" class="btn btn-danger delete"><i class="fa fa-trash"></i></a>';
                     $html .= '</div>';
                     return $html;
@@ -57,7 +57,7 @@ class ChannelController extends Controller implements BesicCRUD
         if ($channel->save()){
             $channel->channelCategories()->sync(!empty($request->channel_type) ? $request->channel_type :[]);
         }
-        return $request->all();
+        return redirect()->route('channel.index');
     }
     private function extracted(Request $request,Channel $channel){
         $channel->title = $request->title;
@@ -65,7 +65,9 @@ class ChannelController extends Controller implements BesicCRUD
         $channel->logo_type = $request->logo_type;
         if ($request->logo_type == 'Choose File'){
             if ($request->hasFile('preview_file')){
-                $channel->preview_file= uploadSingleImage($request->preview_file);
+                $channel->preview_file= uploadSingleImage($request->preview_file,'channel','ch');
+            }elseif ($channel->preview_file){
+
             }else{
                 $channel->preview_file = null;
             }
@@ -87,12 +89,27 @@ class ChannelController extends Controller implements BesicCRUD
 
     public function edit($id)
     {
-        // TODO: Implement edit() method.
+        $channel = Channel::with('channelCategories')->where('id',$id)->first();
+        if (empty($channel)){
+            return  redirect()->route('channel.index');
+        }
+        return view('admin.channel.edit')
+            ->with([
+                'channel'=>$channel
+            ]);
     }
 
     public function update($id, Request $request)
     {
-        // TODO: Implement update() method.
+        $channel = Channel::with('channelCategories')->where('id',$id)->first();
+        if (empty($channel)){
+            return  redirect()->route('channel.index');
+        }
+        $this->extracted($request,$channel);
+        if ($channel->save()){
+            $channel->channelCategories()->sync(!empty($request->channel_type) ? $request->channel_type :[]);
+        }
+        return redirect()->route('channel.index');
     }
 
     public function destroy($id)

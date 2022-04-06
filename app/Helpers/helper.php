@@ -5,7 +5,15 @@ function channelTypeDropdown($selected = []){
     $row = "";
     if ($categories->isNotEmpty()){
         foreach ($categories as $key => $value){
-            $row .= "<option value='$value->id'>$value->name</option>";
+            $row .= "<option value='$value->id' ";
+            if (!empty($selected)){
+                foreach ($selected as $st){
+                    if ($st == $value->id){
+                        $row .= ' selected ';
+                    }
+                }
+            }
+            $row .=' >'.$value->name.'</option>';
         }
     }
     return $row;

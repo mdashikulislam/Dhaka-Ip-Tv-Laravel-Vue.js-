@@ -8,5 +8,7 @@ Route::prefix('admin')->group(function (){
         Route::get('index',[App\Http\Controllers\Admin\ChannelController::class,'index'])->name('channel.index');
         Route::get('create',[App\Http\Controllers\Admin\ChannelController::class,'create'])->name('channel.create');
         Route::post('store',[App\Http\Controllers\Admin\ChannelController::class,'store'])->name('channel.store');
+        Route::get('edit/{id}',[App\Http\Controllers\Admin\ChannelController::class,'edit'])->name('channel.edit');
+        Route::put('update/{id}',[App\Http\Controllers\Admin\ChannelController::class,'update'])->name('channel.update');
     });
 });
