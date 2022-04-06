@@ -12,6 +12,7 @@
                             <thead>
                             <tr>
                                 <th>#</th>
+                                <th>Image</th>
                                 <th>Name</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -30,6 +31,17 @@
 @push('css')
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <style>
+        .small-image{
+            max-width: 80px;
+            height: auto;
+        }
+        .table td.fit,
+        .table th.fit {
+            white-space: nowrap;
+            width: 1%;
+        }
+    </style>
 @endpush
 @push('js')
     <script src="{{ asset('backend/plugins/datatables/jquery.dataTables.min.js')}}"></script>
@@ -47,6 +59,13 @@
             },
             columns: [
                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
+
+                {
+                    data: 'image',
+                    name: 'image',
+                    orderable: false,
+                    defaultContent: ""
+                },
                 {
                     data: 'title',
                     name: 'title',

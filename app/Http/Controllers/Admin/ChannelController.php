@@ -6,6 +6,7 @@ use App\Http\Controllers\BesicCRUD;
 use App\Http\Controllers\Controller;
 use App\Models\Channel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 
 class ChannelController extends Controller implements BesicCRUD
@@ -16,10 +17,22 @@ class ChannelController extends Controller implements BesicCRUD
             $channels = Channel::with('channelCategories');
             return DataTables::of($channels)
                 ->addColumn('action', function($data){
-                    $html ='<a href="#" class="btn btn-info edit"><i class="fa fa-edit"></i></a>';
+                    $html = '<div class="btn-group" role="group" aria-label="Basic example">';
+                    $html .='<a href="#" class="btn btn-info edit"><i class="fa fa-edit"></i></a>';
+                    $html .='<a href="#" class="btn btn-danger delete"><i class="fa fa-trash"></i></a>';
+                    $html .= '</div>';
                     return $html;
                 })
-                ->rawColumns(['action'])
+                ->addColumn('image',function ($data){
+                    $html = '';
+                    if ($data->logo_type == 'Url'){
+                        $html .= "<img class='small-image' src='$data->preview_url'>";
+                    }else{
+                        $html .= "<img class='small-image' src='".Storage::disk('local')->url($data->preview_file)."'>";
+                    }
+                    return $html;
+                })
+                ->rawColumns(['action','image'])
                 ->addIndexColumn()
                 ->make(true);
         }
@@ -51,7 +64,11 @@ class ChannelController extends Controller implements BesicCRUD
         $channel->slug = $request->slug;
         $channel->logo_type = $request->logo_type;
         if ($request->logo_type == 'Choose File'){
-
+            if ($request->hasFile('preview_file')){
+                $channel->preview_file= uploadSingleImage($request->preview_file);
+            }else{
+                $channel->preview_file = null;
+            }
         }else{
             $channel->preview_url = $request->preview_url;
         }
