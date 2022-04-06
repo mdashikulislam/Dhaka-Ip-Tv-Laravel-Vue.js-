@@ -6,16 +6,24 @@ use App\Http\Controllers\BesicCRUD;
 use App\Http\Controllers\Controller;
 use App\Models\Channel;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class ChannelController extends Controller implements BesicCRUD
 {
     public function index()
     {
-        $channels = Channel::with('channelCategories')->get();
-        return view('admin.channel.index')
-            ->with([
-                'channels'=>$channels
-            ]);
+        if (\request()->ajax()){
+            $channels = Channel::with('channelCategories');
+            return DataTables::of($channels)
+                ->addColumn('action', function($data){
+                    $html ='<a href="#" class="btn btn-info edit"><i class="fa fa-edit"></i></a>';
+                    return $html;
+                })
+                ->rawColumns(['action'])
+                ->addIndexColumn()
+                ->make(true);
+        }
+        return view('admin.channel.index');
     }
     public function create()
     {
