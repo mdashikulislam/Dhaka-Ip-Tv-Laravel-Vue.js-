@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class,'index'])->name('landing');
 Route::get('channel/{slug}',[\App\Http\Controllers\ChannelController::class,'index'])->name('channel.details');
-
+Route::get('channel-category/{slug}',[\App\Http\Controllers\ChannelController::class,'channelCategory'])->name('channel.category');
 
 
 Auth::routes();
