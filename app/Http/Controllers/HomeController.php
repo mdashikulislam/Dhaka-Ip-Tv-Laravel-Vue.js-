@@ -21,7 +21,6 @@ class HomeController extends Controller
 
     public function index()
     {
-
         $channelCategory = ChannelCategory::where('status','Active')->where('homepage','Yes')->orderByDesc('created_at')->get();
         return view('frontend.home')
             ->with([

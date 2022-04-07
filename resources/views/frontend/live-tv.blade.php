@@ -7,7 +7,7 @@
                     @php
                         $channels = channelListByCategoryID($category->id);
                     @endphp
-                @if($channels->isNotEmpty())
+                    @if($channels->isNotEmpty())
                         <div class="col-12">
                             <div class="section__title-wrap">
                                 <h2 class="section__title"><a class="text-white" href="{{route('channel.category',['slug'=>$category->slug])}}">{{$category->name}}</a></h2>
@@ -31,7 +31,7 @@
                                 @endforelse
                             </div>
                         </div>
-                @endif
+                    @endif
                 @empty
                 @endforelse
             </div>

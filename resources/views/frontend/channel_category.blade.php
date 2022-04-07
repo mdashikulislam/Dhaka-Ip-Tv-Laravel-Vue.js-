@@ -124,23 +124,7 @@
             <div class="row row--grid">
                 @forelse($channels as $channel)
                 <div class="col-6 col-sm-4 col-md-3 col-xl-2">
-                    <div class="card">
-                        <div class="card__cover">
-                            @if($channel->logo_type == 'Url')
-                                <img class="lazy" src="{{asset('frontend/img/demo.png')}}" data-src="{{$channel->preview_url}}" alt="{{$channel->title}}">
-                            @else
-                                <img class="lazy" src="{{asset('frontend/img/demo.png')}}" data-src="{{\Illuminate\Support\Facades\Storage::disk('local')->url($channel->preview_file)}}" alt="{{$channel->title}}">
-                            @endif
-                            <a href="{{route('channel.details',['slug'=>$channel->slug])}}" class="card__play">
-                                <i class="icon ion-ios-play"></i>
-                            </a>
-                            <span class="card__rate card__rate--green">8.4</span>
-                        </div>
-                        <div class="card__content">
-                            <h3 class="card__title"><a href="{{route('channel.details',['slug'=>$channel->slug])}}">{{$channel->title}}</a></h3>
-
-                        </div>
-                    </div>
+                    {!! getChannelCard($channel) !!}
                 </div>
                 @empty
                 @endforelse

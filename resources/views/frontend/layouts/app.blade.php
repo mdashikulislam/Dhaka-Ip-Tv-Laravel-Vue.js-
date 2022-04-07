@@ -20,16 +20,19 @@
     <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}">
 
     <!-- Favicons -->
-    <link rel="icon" type="image/png" href="icon/favicon-32x32.png" sizes="32x32">
-    <link rel="apple-touch-icon" href="icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" href="{{asset('frontend/icon/favicon-32x32.png')}}" sizes="32x32">
+    <link rel="apple-touch-icon" href="{{asset('frontend/icon/favicon-32x32.png')}}">
 
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="Dmitry Volkov">
     <title>HotFlix – Online Movies, TV Shows & Cinema HTML Template</title>
 </head>
-
 <body class="body">
+@php
+    $currentRoute = Route::currentRouteName();
+@endphp
+
 <!-- header -->
 <header class="header">
     <div class="container">
@@ -46,49 +49,13 @@
                     <ul class="header__nav">
                         <!-- dropdown -->
                         <li class="header__nav-item">
-                            <a class="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuHome" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Home <i class="icon ion-ios-arrow-down"></i></a>
-
-                            <ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuHome">
-                                <li><a href="index-2.html">Home style 1</a></li>
-                                <li><a href="index2.html">Home style 2</a></li>
-                                <li><a href="index3.html">Home style 3</a></li>
-                            </ul>
+                            <a class="dropdown-toggle header__nav-link {{$currentRoute == 'landing' ? 'header__nav-link--active':''}}" href="{{route('landing')}}"  >Home</a>
                         </li>
                         <!-- end dropdown -->
 
                         <!-- dropdown -->
                         <li class="header__nav-item">
-                            <a class="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuCatalog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catalog <i class="icon ion-ios-arrow-down"></i></a>
-
-                            <ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuCatalog">
-                                <li><a href="catalog.html">Catalog style 1</a></li>
-                                <li><a href="catalog2.html">Catalog style 2</a></li>
-                                <li><a href="details.html">Details style 1</a></li>
-                                <li><a href="details2.html">Details style 2</a></li>
-                            </ul>
-                        </li>
-                        <!-- end dropdown -->
-
-                        <li class="header__nav-item">
-                            <a href="pricing.html" class="header__nav-link">Pricing plan</a>
-                        </li>
-
-                        <!-- dropdown -->
-                        <li class="dropdown header__nav-item">
-                            <a class="dropdown-toggle header__nav-link header__nav-link--more" href="#" role="button" id="dropdownMenuMore" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icon ion-ios-more"></i></a>
-
-                            <ul class="dropdown-menu header__dropdown-menu scrollbar-dropdown" aria-labelledby="dropdownMenuMore">
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="profile.html">Profile</a></li>
-                                <li><a href="contacts.html">Contacts</a></li>
-                                <li><a href="faq.html">Help center</a></li>
-                                <li><a href="privacy.html">Privacy policy</a></li>
-                                <li><a href="https://dmitryvolkov.me/demo/hotflix2.1/admin/index.html" target="_blank">Admin pages</a></li>
-                                <li><a href="signin.html">Sign in</a></li>
-                                <li><a href="signup.html">Sign up</a></li>
-                                <li><a href="forgot.html">Forgot password</a></li>
-                                <li><a href="404.html">404 Page</a></li>
-                            </ul>
+                            <a class="dropdown-toggle header__nav-link {{$currentRoute == 'live.tv' ? 'header__nav-link--active':''}}" href="{{route('live.tv')}}"  >Live Tv</a>
                         </li>
                         <!-- end dropdown -->
                     </ul>
@@ -110,21 +77,13 @@
                             <i class="icon ion-ios-search"></i>
                         </button>
 
-                        <!-- dropdown -->
-                        <div class="dropdown header__lang">
-                            <a class="dropdown-toggle header__nav-link" href="#" role="button" id="dropdownMenuLang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">EN <i class="icon ion-ios-arrow-down"></i></a>
-
-                            <ul class="dropdown-menu header__dropdown-menu" aria-labelledby="dropdownMenuLang">
-                                <li><a href="#">English</a></li>
-                                <li><a href="#">Spanish</a></li>
-                                <li><a href="#">Russian</a></li>
-                            </ul>
-                        </div>
-                        <!-- end dropdown -->
-
                         <a href="signin.html" class="header__sign-in">
                             <i class="icon ion-ios-log-in"></i>
                             <span>sign in</span>
+                        </a>
+                        <a href="signin.html" class="header__sign-in">
+                            <i class="icon ion-ios-log-in"></i>
+                            <span>sign up</span>
                         </a>
                     </div>
                     <!-- end header auth -->
