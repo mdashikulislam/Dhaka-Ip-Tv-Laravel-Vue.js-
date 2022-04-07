@@ -7,9 +7,13 @@ use App\Models\ChannelCategory;
 
 class ChannelController extends Controller
 {
-    public function index()
+    public function index($slug)
     {
-        //
+        $channel = Channel::where('slug',$slug)->where('status','Active')->first();
+        if (empty($channel)){
+            abort(404);
+        }
+        return $channel;
     }
 
     public function channelCategory($slug)
