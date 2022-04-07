@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('landing');
+Route::get('/', [\App\Http\Controllers\HomeController::class,'index'])->name('landing');
+Route::get('channel/{slug}',[\App\Http\Controllers\ChannelController::class,'index'])->name('channel.details');
 
 
 

@@ -27,3 +27,13 @@ function uploadSingleImage($request = null, $path = '', $prefix = ''): string
     $fileNameWithDestination = $destination . '/'.$fileName;
     return $fileNameWithDestination;
 }
+function channelListByCategoryID($categoryId = 0,$limit = 0){
+    $data =  \App\Models\Channel::with('channelCategories')->whereHas('channelCategories',function ($query) use ($categoryId){
+        $query->where('channel_category_id',$categoryId);
+    })->where('status','Active');
+    if ($limit > 0){
+        $data = $data->limit($limit);
+    }
+    $data =  $data->orderByDesc('created_at','DESC')->get();
+    return $data;
+}
