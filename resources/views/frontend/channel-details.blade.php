@@ -40,10 +40,10 @@
                         class="video-js vjs-big-play-centered vjs-fill"
                         controls
                         preload="auto"
-                        poster="{{$channel->logo_type == 'Url' ? $channel->preview_url : $channel->preview_file}}"
-                        data-setup="{'fluid': true}">
+                        poster="{{$channel->logo_type == 'Url' ? $channel->preview_url : \Illuminate\Support\Facades\Storage::disk('local')->url($channel->preview_file)}}"
+                        data-setup="{}">
                         {{--     Default media url :  https://d2zihajmogu5jn.cloudfront.net/advanced-fmp4/master.m3u8     --}}
-                        <source src="{{$channel->media_url}}" type="application/x-mpegURL" />
+{{--                        <source src="{{$channel->media_url}}" type="application/x-mpegURL" />--}}
                         <p class="vjs-no-js">
                             To view this video please enable JavaScript, and consider upgrading to a
                             web browser that
@@ -65,20 +65,18 @@
 @push('js')
     <script src="{{asset('backend/mediaplayer/video.min.js?t='.time())}}"></script>
     <script>
-        videojs('my-video', {
-            controls: true,
-            nativeControlsForTouch: false,
-            responsive: true,
-        });
+        var src = '{{$channel->media_url}}';
+        var myPlayer = videojs('my-video');
+        myPlayer.src({src:src,type:'application/x-mpegURL'})
 
-        UrlExists('{{$channel->media_url}}', function(status){
-            console.log(status)
-            if(status === 200){
-                alert('file found');
-            }else{
-                alert('Error');
-            }
-        });
+        {{--UrlExists('{{$channel->media_url}}', function(status){--}}
+        {{--    console.log(status)--}}
+        {{--    if(status === 200){--}}
+        {{--        alert('file found');--}}
+        {{--    }else{--}}
+        {{--        alert('Error');--}}
+        {{--    }--}}
+        {{--});--}}
         function UrlExists(url, cb){
             jQuery.ajax({
                 url:      url,

@@ -77,14 +77,14 @@
                             <i class="icon ion-ios-search"></i>
                         </button>
 
-                        <a href="signin.html" class="header__sign-in">
-                            <i class="icon ion-ios-log-in"></i>
-                            <span>sign in</span>
-                        </a>
-                        <a href="signin.html" class="header__sign-in">
-                            <i class="icon ion-ios-log-in"></i>
-                            <span>sign up</span>
-                        </a>
+{{--                        <a href="signin.html" class="header__sign-in">--}}
+{{--                            <i class="icon ion-ios-log-in"></i>--}}
+{{--                            <span>sign in</span>--}}
+{{--                        </a>--}}
+{{--                        <a href="signin.html" class="header__sign-in">--}}
+{{--                            <i class="icon ion-ios-log-in"></i>--}}
+{{--                            <span>sign up</span>--}}
+{{--                        </a>--}}
                     </div>
                     <!-- end header auth -->
 
