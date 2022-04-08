@@ -13,7 +13,10 @@ class ChannelController extends Controller
         if (empty($channel)){
             abort(404);
         }
-        return $channel;
+        return view('frontend.channel-details')
+            ->with([
+                'channel'=>$channel
+            ]);
     }
 
     public function channelCategory($slug)

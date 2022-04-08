@@ -22,7 +22,7 @@
     <!-- Favicons -->
     <link rel="icon" type="image/png" href="{{asset('frontend/icon/favicon-32x32.png')}}" sizes="32x32">
     <link rel="apple-touch-icon" href="{{asset('frontend/icon/favicon-32x32.png')}}">
-
+    @stack('css')
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="Dmitry Volkov">
@@ -166,6 +166,7 @@
         $("img.lazy").Lazy();
     });
 </script>
+@stack('js')
 </body>
 
 <!-- Mirrored from dmitryvolkov.me/demo/hotflix2.1/main/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Apr 2022 20:17:12 GMT -->
