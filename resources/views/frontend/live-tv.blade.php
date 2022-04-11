@@ -1,5 +1,6 @@
 @extends('frontend.layouts.app')
 @section('content')
+    @include('frontend.inc.page-title',['pageTitle'=>'Live Tv'])
     <section class="section section--border">
         <div class="container">
             <div class="row">
@@ -10,7 +11,7 @@
                     @if($channels->isNotEmpty())
                         <div class="col-12">
                             <div class="section__title-wrap">
-                                <h2 class="section__title"><a class="text-white" href="{{route('channel.category',['slug'=>$category->slug])}}">{{$category->name}}</a></h2>
+                                <a class="text-white" href="{{route('channel.category',['slug'=>$category->slug])}}"><h2 class="section__title">{{$category->name}}</h2></a>
                                 <div class="section__nav-wrap">
                                     <a href="{{route('channel.category',['slug'=>$category->slug])}}" class="section__view">View All</a>
                                     <button class="section__nav section__nav--prev" type="button" data-nav="#carousel{{$key}}">
@@ -23,7 +24,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12 mb-5">
                             <div class="owl-carousel section__carousel" id="carousel{{$key}}">
                                 @forelse($channels as $channel)
                                     {!! getChannelCard($channel) !!}

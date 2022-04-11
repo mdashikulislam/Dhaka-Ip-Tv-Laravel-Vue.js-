@@ -43,9 +43,9 @@ function getChannelCard($data = []){
     }
     $html = '<div class="card"><div class="card__cover">';
     if ($data->logo_type == 'Url'){
-        $html.='<img class="lazy" src="'.asset('frontend/img/demo.png').'" data-src="'.$data->preview_url.'" alt="'.$data->title.'">';
+        $html.='<img style="max-height:90px" class="lazy" src="'.asset('frontend/img/demo.png').'" data-src="'.$data->preview_url.'" alt="'.$data->title.'">';
     }else{
-        $html.='<img class="lazy" src="'.asset('frontend/img/demo.png').'" data-src="'.\Illuminate\Support\Facades\Storage::disk('local')->url($data->preview_file).'" alt="'.$data->title.'">';
+        $html.='<img style="max-height:90px" class="lazy" src="'.asset('frontend/img/demo.png').'" data-src="'.\Illuminate\Support\Facades\Storage::disk('local')->url($data->preview_file).'" alt="'.$data->title.'">';
     }
     $html.='<a href="'.route('channel.details',['slug'=>$data->slug]).'" class="card__play">
                                 <i class="icon ion-ios-play"></i>
