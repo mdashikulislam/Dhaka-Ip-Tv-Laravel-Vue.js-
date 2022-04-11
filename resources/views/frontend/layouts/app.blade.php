@@ -169,3 +169,4 @@
 @stack('js')
 </body>
 </html>
+@include('sweetalert::alert')

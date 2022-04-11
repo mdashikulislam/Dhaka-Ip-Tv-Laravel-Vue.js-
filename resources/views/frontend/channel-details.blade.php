@@ -181,34 +181,21 @@
                     </div>
                     <!-- end content tabs -->
                 </div>
-
+                @if($otherChannel->isNotEmpty())
                 <div class="col-12 col-lg-4 col-xl-4">
                     <div class="row row--grid">
                         <!-- section title -->
                         <div class="col-12">
-                            <h2 class="section__title section__title--sidebar">You may also like...</h2>
+                            <h2 class="section__title section__title--sidebar">You may also like</h2>
                         </div>
+                        @foreach($otherChannel as $ch)
                         <div class="col-6 col-sm-4 col-lg-6">
-                            <div class="card">
-                                <div class="card__cover">
-                                    <img src="img/covers/cover.jpg" alt="">
-                                    <a href="#" class="card__play">
-                                        <i class="icon ion-ios-play"></i>
-                                    </a>
-                                    <span class="card__rate card__rate--green">8.4</span>
-                                </div>
-                                <div class="card__content">
-                                    <h3 class="card__title"><a href="#">I Dream in Another Language</a></h3>
-                                    <span class="card__category">
-										<a href="#">Action</a>
-										<a href="#">Triler</a>
-									</span>
-                                </div>
-                            </div>
+                            {!! getChannelCard($ch) !!}
                         </div>
+                        @endforeach
                     </div>
                 </div>
-                <!-- end sidebar -->
+                @endif
             </div>
         </div>
     </section>

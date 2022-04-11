@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Channel;
 use App\Models\ChannelCategory;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,5 +29,28 @@ class HomeController extends Controller
             ->with([
                 'channels'=>$channels
             ]);
+    }
+
+    public function contactUs()
+    {
+        return view('frontend.contact');
+    }
+
+    public function contactUsSend(Request $request)
+    {
+        $this->validate($request,[
+            'name'=>['required','max:255'],
+            'email'=>['required','max:255','email'],
+            'subject'=>['required','max:255'],
+            'message'=>['required']
+        ]);
+        $contact = new Contact();
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->subject = $request->subject;
+        $contact->message = $request->message;
+        $contact->save();
+        toast('Your request send. our team contact with you. thanks','success');
+        return redirect()->back();
     }
 }

@@ -19,8 +19,9 @@ Route::get('channel-category/{slug}',[\App\Http\Controllers\ChannelController::c
 Route::get('live-tv',[\App\Http\Controllers\ChannelController::class,'liveTv'])->name('live.tv');
 Route::get('scrapping',[\App\Http\Controllers\ScrappingController::class,'index']);
 Route::get('search',[\App\Http\Controllers\HomeController::class,'search'])->name('search');
+Route::get('contact-us',[\App\Http\Controllers\HomeController::class,'contactUs'])->name('contact.us');
+Route::post('contact-us',[\App\Http\Controllers\HomeController::class,'contactUsSend']);
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 

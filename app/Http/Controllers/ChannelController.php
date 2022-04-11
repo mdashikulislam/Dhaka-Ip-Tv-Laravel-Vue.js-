@@ -13,9 +13,11 @@ class ChannelController extends Controller
         if (empty($channel)){
             abort(404);
         }
+        $otherChannel = Channel::where('id','!=',$channel->id)->limit(10)->inRandomOrder()->get();
         return view('frontend.channel-details')
             ->with([
-                'channel'=>$channel
+                'channel'=>$channel,
+                'otherChannel'=>$otherChannel
             ]);
     }
 
