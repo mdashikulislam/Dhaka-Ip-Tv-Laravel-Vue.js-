@@ -25,9 +25,11 @@ class ChannelController extends Controller
             $q->where('slug',$slug);
             $q->where('status','Active');
         })->where('status','Active')->paginate(18);
+        $channelCategory = ChannelCategory::where('slug',$slug)->first();
         return view('frontend.channel_category')
             ->with([
-                'channels'=>$channels
+                'channels'=>$channels,
+                'channelCategory'=>$channelCategory
             ]);
     }
 

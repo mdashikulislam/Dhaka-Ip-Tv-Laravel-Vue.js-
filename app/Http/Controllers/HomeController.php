@@ -16,4 +16,17 @@ class HomeController extends Controller
                 'channelCategory'=>$channelCategory
             ]);
     }
+
+    public function search(Request $request)
+    {
+        $channels = Channel::where('status','Active');
+        if (!empty($request->keyword)){
+            $channels = $channels->where('title','LIKE',"%$request->keyword%");
+        }
+        $channels = $channels->paginate(24);
+        return view('frontend.search')
+            ->with([
+                'channels'=>$channels
+            ]);
+    }
 }

@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Mirrored from dmitryvolkov.me/demo/hotflix2.1/main/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Apr 2022 20:15:28 GMT -->
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -41,7 +39,7 @@
                 <div class="header__content">
                     <!-- header logo -->
                     <a href="{{route('landing')}}" class="header__logo">
-                        <img src="{{asset('frontend/img/logo.svg')}}" alt="">
+                        <img src="{{asset('frontend/img/logo.svg')}}" alt="{{getenv('APP_NAME')}}">
                     </a>
                     <!-- end header logo -->
 
@@ -63,8 +61,8 @@
 
                     <!-- header auth -->
                     <div class="header__auth">
-                        <form action="#" class="header__search">
-                            <input class="header__search-input" type="text" placeholder="Search...">
+                        <form action="{{route('search')}}" class="header__search">
+                            <input class="header__search-input" value="{{\request()->input('keyword') ? : ''}}" name="keyword" type="text" placeholder="Search...">
                             <button class="header__search-button" type="button">
                                 <i class="icon ion-ios-search"></i>
                             </button>
@@ -114,6 +112,8 @@
 {{--    </div>--}}
 {{--</section>--}}
 <!-- end home -->
+<!-- page title -->
+
 
 @section('content')
 
@@ -126,7 +126,7 @@
             <div class="col-12">
                 <div class="footer__content">
                     <a href="{{route('landing')}}" class="footer__logo">
-                        <img src="{{asset('frontend/img/logo.svg')}}" alt="">
+                        <img src="{{asset('frontend/img/logo.svg')}}" alt="{{getenv('APP_NAME')}}">
                     </a>
 
                     <span class="footer__copyright">© HOTFLIX, 2019—2021 <br> Create by <a href="https://themeforest.net/user/dmitryvolkov/portfolio" target="_blank">Dmitry Volkov</a></span>
@@ -160,7 +160,7 @@
 <script src="{{asset('frontend/js/photoswipe.min.js')}}"></script>
 <script src="{{asset('frontend/js/photoswipe-ui-default.min.js')}}"></script>
 <script src="{{asset('frontend/js/main.js')}}"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.10/jquery.lazy.min.js"></script>
 <script>
     $(function($) {
         $("img.lazy").Lazy();
@@ -168,6 +168,4 @@
 </script>
 @stack('js')
 </body>
-
-<!-- Mirrored from dmitryvolkov.me/demo/hotflix2.1/main/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Apr 2022 20:17:12 GMT -->
 </html>

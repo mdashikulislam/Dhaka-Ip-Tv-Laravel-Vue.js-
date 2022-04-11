@@ -50,7 +50,7 @@ function getChannelCard($data = []){
     $html.='<a href="'.route('channel.details',['slug'=>$data->slug]).'" class="card__play">
                                 <i class="icon ion-ios-play"></i>
                             </a>
-                            <!--<span class="card__rate card__rate--green">8.4</span>-->
+
                         </div>
                         <div class="card__content">
                             <h3 class="card__title"><a href="'.route('channel.details',['slug'=>$data->slug]).'">'.$data->title.'</a></h3>

@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 @section('content')
-    <section class="section section--border">
+    <section class="section section--border" style="margin-top: 30px;">
         <div class="container">
             <div class="row">
                 @forelse($channelCategory as $key => $category)
@@ -8,15 +8,14 @@
                         $channels = channelListByCategoryID($category->id);
                     @endphp
                 @if($channels->isNotEmpty())
-                        <div class="col-12">
+                        <div class="col-12 mt-5">
                             <div class="section__title-wrap">
-                                <h2 class="section__title"><a class="text-white" href="{{route('channel.category',['slug'=>$category->slug])}}">{{$category->name}}</a></h2>
+                                <a class="text-white" href="{{route('channel.category',['slug'=>$category->slug])}}"><h2 class="section__title">{{$category->name}}</h2></a>
                                 <div class="section__nav-wrap">
                                     <a href="{{route('channel.category',['slug'=>$category->slug])}}" class="section__view">View All</a>
                                     <button class="section__nav section__nav--prev" type="button" data-nav="#carousel{{$key}}">
                                         <i class="icon ion-ios-arrow-back"></i>
                                     </button>
-
                                     <button class="section__nav section__nav--next" type="button" data-nav="#carousel{{$key}}">
                                         <i class="icon ion-ios-arrow-forward"></i>
                                     </button>
