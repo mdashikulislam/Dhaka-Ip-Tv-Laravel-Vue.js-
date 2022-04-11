@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 @section('content')
-    @include('frontend.inc.page-title',['pageTitle'=>'Keyword : '.request()->input('keyword')])
+    @include('frontend.inc.page-title',['pageTitle'=>'Search Result'])
     <div class="section section--top">
         <div class="container">
             <div class="row row--grid">
