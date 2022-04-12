@@ -133,7 +133,7 @@
 
                     <nav class="footer__nav">
                         <a href="about.html">About Us</a>
-                        <a href="contacts.html">Contacts</a>
+                        <a href="{{route('contact.us')}}">Contacts</a>
                         <a href="privacy.html">Privacy policy</a>
                     </nav>
 
