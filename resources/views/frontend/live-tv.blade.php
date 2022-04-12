@@ -27,7 +27,7 @@
                         <div class="col-12 mb-5">
                             <div class="owl-carousel section__carousel" id="carousel{{$key}}">
                                 @forelse($channels as $channel)
-                                    {!! getChannelCard($channel) !!}
+                                    {!! getChannelCard($channel,$channel->ratings()->average('rating')) !!}
                                 @empty
                                 @endforelse
                             </div>

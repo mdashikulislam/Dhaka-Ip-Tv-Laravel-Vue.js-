@@ -22,6 +22,7 @@
                                     @else
                                         <img src="{{\Illuminate\Support\Facades\Storage::disk('local')->url($channel->preview_file)}}" alt="{{$channel->title}}">
                                     @endif
+                                    {!! ratingShow($channel->ratings->avg('rating')) !!}
                                 </div>
                                 <div class="card__description">
                                     {{strip_tags($channel->description)}}
@@ -52,97 +53,120 @@
         </div>
         <!-- end details content -->
     </section>
-    <!-- content -->
     <section class="content">
         <div class="content__head">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <!-- content title -->
-                        <h2 class="content__title">Discover</h2>
-                        <!-- end content title -->
-                        <!-- content tabs nav -->
-                        <ul class="nav nav-tabs content__tabs" id="content__tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Reviews</a>
-                            </li>
-                        </ul>
-                        <!-- end content tabs nav -->
-
-                        <!-- content mobile tabs nav -->
-                        <div class="content__mobile-tabs" id="content__mobile-tabs">
-                            <div class="content__mobile-tabs-btn dropdown-toggle" role="navigation" id="mobile-tabs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <input type="button" value="Comments">
-                                <span></span>
-                            </div>
-
-                            <div class="content__mobile-tabs-menu dropdown-menu" aria-labelledby="mobile-tabs">
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li class="nav-item"><a class="nav-link" id="2-tab" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Reviews</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- end content mobile tabs nav -->
+                        <h2 class="section__title section__title--sidebar">You may also like</h2>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="container">
             <div class="row">
-                <div class="col-12 col-lg-8 col-xl-8">
-                    <!-- content tabs -->
-                    <div class="tab-content">
-                        <div class="tab-pane active show fade" id="tab-2" role="tabpanel" aria-labelledby="2-tab">
-                            <div class="row">
-                                <!-- reviews -->
-                                <div class="col-12">
-                                    <div class="reviews">
-                                        <ul class="reviews__list">
-                                            <li class="reviews__item">
-                                                <div class="reviews__autor">
-                                                    <img class="reviews__avatar" src="{{asset('frontend/img/user.svg')}}" alt="">
-                                                    <span class="reviews__name">Best Marvel movie in my opinion</span>
-                                                    <span class="reviews__time">24.08.2018, 17:53 by John Doe</span>
-                                                    <span class="reviews__rating reviews__rating--green">8.4</span>
-                                                </div>
-                                                <p class="reviews__text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-                                            </li>
-                                        </ul>
-                                        <form action="#" class="form">
-                                            <textarea class="form__textarea" placeholder="Review"></textarea>
-                                            <div class="form__slider">
-                                                <div class="form__slider-rating" id="slider__rating"></div>
-                                                <div class="form__slider-value" id="form__slider-value"></div>
-                                            </div>
-                                            <button type="button" class="form__btn">Send</button>
-                                        </form>
-                                    </div>
-                                </div>
-                                <!-- end reviews -->
-                            </div>
-                        </div>
+                @foreach($otherChannel as $ch)
+                    <div class="col-6 col-sm-4 col-md-3 col-xl-2">
+                        {!! getChannelCard($ch,$ch->ratings()->average('rating')) !!}
                     </div>
-                    <!-- end content tabs -->
-                </div>
-                @if($otherChannel->isNotEmpty())
-                <div class="col-12 col-lg-4 col-xl-4">
-                    <div class="row row--grid">
-                        <!-- section title -->
-                        <div class="col-12">
-                            <h2 class="section__title section__title--sidebar">You may also like</h2>
-                        </div>
-                        @foreach($otherChannel as $ch)
-                        <div class="col-6 col-sm-4 col-lg-6">
-                            {!! getChannelCard($ch) !!}
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-                @endif
+                @endforeach
             </div>
         </div>
     </section>
+    <!-- content -->
+{{--    <section class="content">--}}
+{{--        <div class="content__head">--}}
+{{--            <div class="container">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-12">--}}
+{{--                        <!-- content title -->--}}
+{{--                        <h2 class="content__title">Discover</h2>--}}
+{{--                        <!-- end content title -->--}}
+{{--                        <!-- content tabs nav -->--}}
+{{--                        <ul class="nav nav-tabs content__tabs" id="content__tabs" role="tablist">--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link active" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Reviews</a>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                        <!-- end content tabs nav -->--}}
+
+{{--                        <!-- content mobile tabs nav -->--}}
+{{--                        <div class="content__mobile-tabs" id="content__mobile-tabs">--}}
+{{--                            <div class="content__mobile-tabs-btn dropdown-toggle" role="navigation" id="mobile-tabs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                                <input type="button" value="Comments">--}}
+{{--                                <span></span>--}}
+{{--                            </div>--}}
+
+{{--                            <div class="content__mobile-tabs-menu dropdown-menu" aria-labelledby="mobile-tabs">--}}
+{{--                                <ul class="nav nav-tabs" role="tablist">--}}
+{{--                                    <li class="nav-item"><a class="nav-link" id="2-tab" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false">Reviews</a></li>--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <!-- end content mobile tabs nav -->--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-12 col-lg-8 col-xl-8">--}}
+{{--                    <!-- content tabs -->--}}
+{{--                    <div class="tab-content">--}}
+{{--                        <div class="tab-pane active show fade" id="tab-2" role="tabpanel" aria-labelledby="2-tab">--}}
+{{--                            <div class="row">--}}
+{{--                                <!-- reviews -->--}}
+{{--                                <div class="col-12">--}}
+{{--                                    <div class="reviews">--}}
+{{--                                        <ul class="reviews__list">--}}
+{{--                                            <li class="reviews__item">--}}
+{{--                                                <div class="reviews__autor">--}}
+{{--                                                    <img class="reviews__avatar" src="{{asset('frontend/img/user.svg')}}" alt="">--}}
+{{--                                                    <span class="reviews__name">Best Marvel movie in my opinion</span>--}}
+{{--                                                    <span class="reviews__time">24.08.2018, 17:53 by John Doe</span>--}}
+{{--                                                    <span class="reviews__rating reviews__rating--green">8.4</span>--}}
+{{--                                                </div>--}}
+{{--                                                <p class="reviews__text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>--}}
+{{--                                            </li>--}}
+{{--                                        </ul>--}}
+{{--                                        <form action="{{route('review.send')}}" method="POST" class="form">--}}
+{{--                                            @csrf--}}
+{{--                                            <input type="hidden" name="post_id" value="{{$channel->id}}">--}}
+{{--                                            <textarea name="review" required class="form__textarea" placeholder="Review">{{old('review')}}</textarea>--}}
+{{--                                            <div class="form__slider">--}}
+{{--                                                <input type="hidden" name="rating" id="rating_value">--}}
+{{--                                                <div class="form__slider-rating" id="slider__rating"></div>--}}
+{{--                                                <div class="form__slider-value" id="form__slider-value"></div>--}}
+{{--                                            </div>--}}
+{{--                                            <button type="submit" class="form__btn">Send</button>--}}
+{{--                                        </form>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <!-- end reviews -->--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <!-- end content tabs -->--}}
+{{--                </div>--}}
+{{--                @if($otherChannel->isNotEmpty())--}}
+{{--                <div class="col-12 col-lg-4 col-xl-4">--}}
+{{--                    <div class="row row--grid">--}}
+{{--                        <!-- section title -->--}}
+{{--                        <div class="col-12">--}}
+{{--                            <h2 class="section__title section__title--sidebar">You may also like</h2>--}}
+{{--                        </div>--}}
+{{--                        @foreach($otherChannel as $ch)--}}
+{{--                        <div class="col-6 col-sm-4 col-lg-6">--}}
+{{--                            {!! getChannelCard($ch,$ch->ratings()->average('rating')) !!}--}}
+{{--                        </div>--}}
+{{--                        @endforeach--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                @endif--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
     <!-- end content -->
 @endsection
 @push('css')

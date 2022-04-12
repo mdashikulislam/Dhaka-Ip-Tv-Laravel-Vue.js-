@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Channel;
 use App\Models\ChannelCategory;
+use App\Models\Review;
 
 class ChannelController extends Controller
 {
@@ -13,11 +14,13 @@ class ChannelController extends Controller
         if (empty($channel)){
             abort(404);
         }
-        $otherChannel = Channel::where('id','!=',$channel->id)->limit(10)->inRandomOrder()->get();
+//        $reviews = Review::where('post_id',$channel->id)->orderByDesc('created_at')->get();
+        $otherChannel = Channel::where('id','!=',$channel->id)->limit(24)->inRandomOrder()->get();
         return view('frontend.channel-details')
             ->with([
                 'channel'=>$channel,
-                'otherChannel'=>$otherChannel
+                'otherChannel'=>$otherChannel,
+//                'reviews'=>$reviews
             ]);
     }
 

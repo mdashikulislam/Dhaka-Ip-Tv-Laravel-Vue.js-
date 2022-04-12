@@ -17,7 +17,7 @@ class CreateReviewsTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->text('review');
-            $table->integer('rating')->default(0);
+            $table->string('rating',11)->default(0);
             $table->enum('type',['Channel','Radio'])->default('Channel');
             $table->enum('status',['Active','Inactive'])->default('Active');
             $table->timestamps();

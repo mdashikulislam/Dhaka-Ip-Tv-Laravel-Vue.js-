@@ -9,7 +9,7 @@
             <div class="row row--grid">
                 @forelse($channels as $channel)
                 <div class="col-6 col-sm-4 col-md-3 col-xl-2">
-                    {!! getChannelCard($channel) !!}
+                    {!! getChannelCard($channel,$channel->ratings()->average('rating')) !!}
                 </div>
                 @empty
                 @endforelse

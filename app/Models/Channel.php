@@ -13,4 +13,10 @@ class Channel extends Model
     {
         return $this->belongsToMany(ChannelCategory::class,'channel_categories_channels');
     }
+
+    public function ratings()
+    {
+        return $this->hasMany(Review::class,'post_id','id');
+    }
+
 }
