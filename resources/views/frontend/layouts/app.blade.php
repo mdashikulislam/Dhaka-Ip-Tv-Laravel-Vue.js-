@@ -21,10 +21,9 @@
     <link rel="icon" type="image/png" href="{{asset('frontend/icon/favicon-32x32.png')}}" sizes="32x32">
     <link rel="apple-touch-icon" href="{{asset('frontend/icon/favicon-32x32.png')}}">
     @stack('css')
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="Dmitry Volkov">
-    <title>HotFlix – Online Movies, TV Shows & Cinema HTML Template</title>
+    {!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+    {!! Twitter::generate() !!}
 </head>
 <body class="body">
 @php
@@ -132,9 +131,8 @@
                     <span class="footer__copyright">© HOTFLIX, 2019—2021 <br> Create by <a href="https://themeforest.net/user/dmitryvolkov/portfolio" target="_blank">Dmitry Volkov</a></span>
 
                     <nav class="footer__nav">
-                        <a href="about.html">About Us</a>
+                        <a href="{{route('about.us')}}">About Us</a>
                         <a href="{{route('contact.us')}}">Contacts</a>
-                        <a href="privacy.html">Privacy policy</a>
                     </nav>
 
                     <button class="footer__back" type="button">

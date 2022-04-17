@@ -21,6 +21,9 @@ Route::get('scrapping',[\App\Http\Controllers\ScrappingController::class,'index'
 Route::get('search',[\App\Http\Controllers\HomeController::class,'search'])->name('search');
 Route::get('contact-us',[\App\Http\Controllers\HomeController::class,'contactUs'])->name('contact.us');
 Route::post('contact-us',[\App\Http\Controllers\HomeController::class,'contactUsSend']);
+Route::get('about-us',[\App\Http\Controllers\HomeController::class,'aboutUs'])->name('about.us');
+
+
 Route::post('review',[\App\Http\Controllers\UserController::class,'reviewSend'])->name('review.send')->middleware('auth');
 
 Auth::routes();

@@ -86,3 +86,20 @@ function ratingShow($total = 0){
         return false;
     }
 }
+function getCms($url, $where_array = []){
+    $row =  \App\Models\Cms::where('url', '=', $url)->first();
+
+    $data = new stdClass();
+    $data->seo_title = $row ? $row->seo_title : '';
+    $data->seo_keyword  = $row ? $row->seo_keyword : '';
+    $data->seo_description     = $row ? $row->seo_description : '';
+
+    if (!empty($row) && !empty($where_array)){
+        foreach ($where_array as $k => $d){
+            $data->seo_title    = str_replace('%' . $k . '%', $d, $data->seo_title);
+            $data->seo_keyword  = str_replace('%' . $k . '%', $d, $data->seo_keyword);
+            $data->seo_description     = str_replace('%' . $k . '%', $d, $data->seo_description);
+        }
+    }
+    return $data;
+}

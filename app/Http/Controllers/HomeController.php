@@ -53,4 +53,9 @@ class HomeController extends Controller
         toast('Your request send. our team contact with you. thanks','success');
         return redirect()->back();
     }
+
+    public function aboutUs()
+    {
+        return view('frontend.about');
+    }
 }
