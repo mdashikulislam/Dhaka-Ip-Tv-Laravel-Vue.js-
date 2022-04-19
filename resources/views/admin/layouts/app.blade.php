@@ -10,28 +10,27 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{asset('backend/plugins/fontawesome-free/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/plugins/fontawesome-free/css/all.min.css?t='.time())}}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet" href="{{asset('backend/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css?t='.time())}}">
     <!-- iCheck -->
-    <link rel="stylesheet" href="{{asset('backend/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/plugins/icheck-bootstrap/icheck-bootstrap.min.css?t='.time())}}">
     <!-- JQVMap -->
-    <link rel="stylesheet" href="{{asset('backend/plugins/jqvmap/jqvmap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/plugins/jqvmap/jqvmap.min.css?t='.time())}}">
     <!-- Theme style -->
-
-    <link rel="stylesheet" href="{{asset('backend/dist/css/adminlte.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/dist/css/adminlte.min.css?t='.time())}}">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="{{asset('backend/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/plugins/overlayScrollbars/css/OverlayScrollbars.min.css?t='.time())}}">
     <!-- Daterange picker -->
-    <link rel="stylesheet" href="{{asset('backend/plugins/daterangepicker/daterangepicker.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/plugins/daterangepicker/daterangepicker.css?t='.time())}}">
     <!-- summernote -->
-    <link rel="stylesheet" href="{{asset('backend/plugins/summernote/summernote-bs4.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/plugins/summernote/summernote-bs4.min.css?t='.time())}}">
 
 
-    @stack('css')
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+@stack('css')
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -150,35 +149,35 @@
 </div>
 
 
-<script src="{{asset('backend/plugins/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('backend/plugins/jquery/jquery.min.js?t='.time())}}"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="{{asset('backend/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+<script src="{{asset('backend/plugins/jquery-ui/jquery-ui.min.js?t='.time())}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src="{{asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('backend/plugins/bootstrap/js/bootstrap.bundle.min.js?t='.time())}}"></script>
 <!-- ChartJS -->
-<script src="{{asset('backend/plugins/chart.js/Chart.min.js')}}"></script>
+<script src="{{asset('backend/plugins/chart.js/Chart.min.js?t='.time())}}"></script>
 <!-- Sparkline -->
-<script src="{{asset('backend/plugins/sparklines/sparkline.js')}}"></script>
+<script src="{{asset('backend/plugins/sparklines/sparkline.js?t='.time())}}"></script>
 <!-- JQVMap -->
-<script src="{{asset('backend/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
-<script src="{{asset('backend/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
+<script src="{{asset('backend/plugins/jqvmap/jquery.vmap.min.js?t='.time())}}"></script>
+<script src="{{asset('backend/plugins/jqvmap/maps/jquery.vmap.usa.js?t='.time())}}"></script>
 <!-- jQuery Knob Chart -->
-<script src="{{asset('backend/plugins/jquery-knob/jquery.knob.min.js')}}"></script>
+<script src="{{asset('backend/plugins/jquery-knob/jquery.knob.min.js?t='.time())}}"></script>
 <!-- daterangepicker -->
-<script src="{{asset('backend/plugins/moment/moment.min.js')}}"></script>
-<script src="{{asset('backend/plugins/daterangepicker/daterangepicker.js')}}"></script>
+<script src="{{asset('backend/plugins/moment/moment.min.js?t='.time())}}"></script>
+<script src="{{asset('backend/plugins/daterangepicker/daterangepicker.js?t='.time())}}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="{{asset('backend/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+<script src="{{asset('backend/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js?t='.time())}}"></script>
 <!-- Summernote -->
-<script src="{{asset('backend/plugins/summernote/summernote-bs4.min.js')}}"></script>
+<script src="{{asset('backend/plugins/summernote/summernote-bs4.min.js?t='.time())}}"></script>
 <!-- overlayScrollbars -->
-<script src="{{asset('backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+<script src="{{asset('backend/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js?t='.time())}}"></script>
 <!-- AdminLTE App -->
-<script src="{{asset('backend/dist/js/adminlte.js')}}"></script>
+<script src="{{asset('backend/dist/js/adminlte.js?t='.time())}}"></script>
 
 
 @stack('js')
