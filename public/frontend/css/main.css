@@ -3882,3 +3882,11 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 .mCS-custom-bar3.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar {
   background-color: #f9ab00;
 }
+.form-error{
+    color: red;
+    display: block;
+    margin-bottom: 10px;
+}
+.form-error-focus{
+    border-color: #ff0000;
+}

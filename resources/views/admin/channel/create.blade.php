@@ -212,6 +212,7 @@
                     });
                 }else{
                     var videoSource = $(this).val().toString();
+                    console.log(videoSource)
                     player.src({
                         src: videoSource,
                         type: 'application/x-mpegURL',

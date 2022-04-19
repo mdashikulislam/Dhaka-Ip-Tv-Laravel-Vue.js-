@@ -37,3 +37,69 @@ function channelListByCategoryID($categoryId = 0,$limit = 0){
     $data =  $data->orderByDesc('created_at','DESC')->get();
     return $data;
 }
+function getChannelCard($data = [],$average = 0){
+    if (empty((object)$data)){
+        return ;
+    }
+    $html = '<div class="card"><div class="card__cover">';
+    if ($data->logo_type == 'Url'){
+        $html.='<img style="max-height:90px" class="lazy" src="'.asset('frontend/img/demo.png').'" data-src="'.$data->preview_url.'" alt="'.$data->title.'">';
+    }else{
+        $html.='<img style="max-height:90px" class="lazy" src="'.asset('frontend/img/demo.png').'" data-src="'.\Illuminate\Support\Facades\Storage::disk('local')->url($data->preview_file).'" alt="'.$data->title.'">';
+    }
+    if ($average > 0){
+        $average = number_format((int)$average,1);
+        $class = '';
+        if ((int)$average > 7.5){
+            $class = 'card__rate--green';
+        }elseif ((int)$average > 5.5){
+            $class = 'card__rate--yellow';
+        }else{
+            $class = 'card__rate--red';
+        }
+        $html.="<span class='card__rate $class'>$average</span>";
+    }
+    $html.='<a href="'.route('channel.details',['slug'=>$data->slug]).'" class="card__play">
+                                <i class="icon ion-ios-play"></i>
+                            </a>
+
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card__title"><a href="'.route('channel.details',['slug'=>$data->slug]).'">'.$data->title.'</a></h3>
+                        </div>
+                    </div>';
+    return $html;
+}
+function ratingShow($total = 0){
+    if ($total > 0){
+        $total = number_format((int)$total,1);
+        $class = '';
+        if ((int)$total > 7.5){
+            $class = 'card__rate--green';
+        }elseif ((int)$total > 5.5){
+            $class = 'card__rate--yellow';
+        }else{
+            $class = 'card__rate--red';
+        }
+        return "<span class='card__rate $class'>$total</span>";
+    }else{
+        return false;
+    }
+}
+function getCms($url, $where_array = []){
+    $row =  \App\Models\Cms::where('url', '=', $url)->first();
+
+    $data = new stdClass();
+    $data->seo_title = $row ? $row->seo_title : '';
+    $data->seo_keyword  = $row ? $row->seo_keyword : '';
+    $data->seo_description     = $row ? $row->seo_description : '';
+
+    if (!empty($row) && !empty($where_array)){
+        foreach ($where_array as $k => $d){
+            $data->seo_title    = str_replace('%' . $k . '%', $d, $data->seo_title);
+            $data->seo_keyword  = str_replace('%' . $k . '%', $d, $data->seo_keyword);
+            $data->seo_description     = str_replace('%' . $k . '%', $d, $data->seo_description);
+        }
+    }
+    return $data;
+}

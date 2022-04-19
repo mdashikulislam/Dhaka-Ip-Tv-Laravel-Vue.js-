@@ -15868,6 +15868,447 @@
      
 }
 
+    namespace RealRashid\SweetAlert\Facades { 
+            /**
+     * 
+     *
+     */ 
+        class Alert {
+                    /**
+         * The default configuration for middleware alert.
+         *
+         * @return \RealRashid\SweetAlert\$config 
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function middleware()
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->middleware();
+        }
+                    /**
+         * Flash an alert message.
+         *
+         * @param string $title
+         * @param string $text
+         * @param array $icon
+         * @return void 
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function alert($title = '', $text = '', $icon = null)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        $instance->alert($title, $text, $icon);
+        }
+                    /**
+         * Display a success typed alert message with a text and a title.
+         *
+         * @param string $title
+         * @param string $text
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function success($title = '', $text = '')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->success($title, $text);
+        }
+                    /**
+         * Display a info typed alert message with a text and a title.
+         *
+         * @param string $title
+         * @param string $text
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function info($title = '', $text = '')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->info($title, $text);
+        }
+                    /**
+         * Display a warning typed alert message with a text and a title.
+         *
+         * @param string $title
+         * @param string $text
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function warning($title = '', $text = '')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->warning($title, $text);
+        }
+                    /**
+         * Display a question typed alert message with a text and a title.
+         *
+         * @param string $title
+         * @param string $text
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function question($title = '', $text = '')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->question($title, $text);
+        }
+                    /**
+         * Display a error typed alert message with a text and a title.
+         *
+         * @param string $title
+         * @param string $text
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function error($title = '', $text = '')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->error($title, $text);
+        }
+                    /**
+         * Display a message with a custom image and CSS animation disabled.
+         *
+         * @param string $title
+         * @param string $text
+         * @param string $imageUrl
+         * @param integer $imageWidth
+         * @param integer $imageHeight
+         * @param string $imageAlt
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function image($title, $text, $imageUrl, $imageWidth, $imageHeight, $imageAlt)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->image($title, $text, $imageUrl, $imageWidth, $imageHeight, $imageAlt);
+        }
+                    /**
+         * Display a html typed alert message with html code.
+         *
+         * @param string $title
+         * @param string $code
+         * @param string $icon
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function html($title = '', $code = '', $icon = '')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->html($title, $code, $icon);
+        }
+                    /**
+         * Display a toast message
+         *
+         * @param string $title
+         * @param string $icon
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function toast($title = '', $icon = '')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->toast($title, $icon);
+        }
+                    /**
+         * Convert any alert modal to Toast
+         *
+         * @param string $position
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function toToast($position = '')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->toToast($position);
+        }
+                    /**
+         * Convert any alert modal to html
+         *
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function toHtml()
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->toHtml();
+        }
+                    /**
+         * Add a custom image to alert
+         *
+         * @param string $imageUrl
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function addImage($imageUrl)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->addImage($imageUrl);
+        }
+                    /**
+         * Add footer section to alert()
+         *
+         * @param string $code
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function footer($code)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->footer($code);
+        }
+                    /**
+         * positioned alert dialog
+         *
+         * @param string $position
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function position($position = 'top-end')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->position($position);
+        }
+                    /**
+         * Modal window width
+         * including paddings
+         * (box-sizing: border-box).
+         * 
+         * Can be in px or %. The default width is 32rem
+         *
+         * @param string $width
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function width($width = '32rem')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->width($width);
+        }
+                    /**
+         * Modal window padding.
+         * 
+         * The default padding is 1.25rem.
+         *
+         * @param string $padding
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function padding($padding = '1.25rem')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->padding($padding);
+        }
+                    /**
+         * Modal window background
+         * (CSS background property).
+         * 
+         * The default background is '#fff'.
+         *
+         * @param string $background
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function background($background = '#fff')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->background($background);
+        }
+                    /**
+         * Set to false if you want to
+         * focus the first element in tab
+         * order instead of "Confirm"-button by default.
+         *
+         * @param boolean $focus
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function focusConfirm($focus = true)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->focusConfirm($focus);
+        }
+                    /**
+         * Set to true if you want to focus the
+         * "Cancel"-button by default.
+         *
+         * @param boolean $focus
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function focusCancel($focus = false)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->focusCancel($focus);
+        }
+                    /**
+         * Custom animation with [Animate.css](https://daneden.github.io/animate.css/)
+         * CSS classes for animations when showing a popup (fade in):
+         * CSS classes for animations when hiding a popup (fade out):
+         *
+         * @param string $showAnimation
+         * @param string $hideAnimation
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function animation($showAnimation, $hideAnimation)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->animation($showAnimation, $hideAnimation);
+        }
+                    /**
+         * Persistent the alert modal
+         *
+         * @param boolean $showConfirmBtn
+         * @param boolean $showCloseBtn
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function persistent($showConfirmBtn = true, $showCloseBtn = false)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->persistent($showConfirmBtn, $showCloseBtn);
+        }
+                    /**
+         * auto close alert modal after
+         * specifid time
+         *
+         * @param integer $milliseconds
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function autoClose($milliseconds = 5000)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->autoClose($milliseconds);
+        }
+                    /**
+         * Display confirm button
+         *
+         * @param string $btnText
+         * @param string $btnColor
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function showConfirmButton($btnText = 'Ok', $btnColor = '#3085d6')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->showConfirmButton($btnText, $btnColor);
+        }
+                    /**
+         * Display cancel button
+         *
+         * @param string $btnText
+         * @param string $btnColor
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function showCancelButton($btnText = 'Cancel', $btnColor = '#aaa')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->showCancelButton($btnText, $btnColor);
+        }
+                    /**
+         * Display close button
+         *
+         * @param string $closeButtonAriaLabel
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function showCloseButton($closeButtonAriaLabel = 'aria-label')
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->showCloseButton($closeButtonAriaLabel);
+        }
+                    /**
+         * Hide close button from alert or toast
+         *
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function hideCloseButton()
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->hideCloseButton();
+        }
+                    /**
+         * Apply default styling to buttons.
+         * 
+         * If you want to use your own classes (e.g. Bootstrap classes)
+         * set this parameter to false.
+         *
+         * @param boolean $buttonsStyling
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function buttonsStyling($buttonsStyling)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->buttonsStyling($buttonsStyling);
+        }
+                    /**
+         * Use any HTML inside icons (e.g. Font Awesome)
+         *
+         * @param string $iconHtml
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function iconHtml($iconHtml)
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->iconHtml($iconHtml);
+        }
+                    /**
+         * If set to true, the timer will have a progress bar at the bottom of a popup.
+         * 
+         * Mostly, this feature is useful with toasts.
+         *
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function timerProgressBar()
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->timerProgressBar();
+        }
+                    /**
+         * Reverse buttons position
+         *
+         * @author Faber44 <https://github.com/Faber44>
+         * @static 
+         */ 
+        public static function reverseButtons()
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->reverseButtons();
+        }
+                    /**
+         * Flash the config options for alert.
+         *
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function flash()
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->flash();
+        }
+                    /**
+         * Build Flash config options for flashing.
+         *
+         * @author Rashid Ali <realrashid05@gmail.com>
+         * @static 
+         */ 
+        public static function buildConfig()
+        {
+                        /** @var \RealRashid\SweetAlert\Toaster $instance */
+                        return $instance->buildConfig();
+        }
+         
+    }
+     
+}
+
     namespace Facade\Ignition\Facades { 
             /**
      * Class Flare.
@@ -16103,6 +16544,343 @@
         {
                         /** @var \Facade\FlareClient\Flare $instance */
                         return $instance->group($groupName, $properties);
+        }
+         
+    }
+     
+}
+
+    namespace Weidner\Goutte { 
+            /**
+     * 
+     *
+     * @see \Weidner\Goutte\Goutte
+     */ 
+        class GoutteFacade {
+                    /**
+         * Sets whether to automatically follow redirects or not.
+         *
+         * @static 
+         */ 
+        public static function followRedirects($followRedirects = true)
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->followRedirects($followRedirects);
+        }
+                    /**
+         * Sets whether to automatically follow meta refresh redirects or not.
+         *
+         * @static 
+         */ 
+        public static function followMetaRefresh($followMetaRefresh = true)
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->followMetaRefresh($followMetaRefresh);
+        }
+                    /**
+         * Returns whether client automatically follows redirects or not.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function isFollowingRedirects()
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->isFollowingRedirects();
+        }
+                    /**
+         * Sets the maximum number of redirects that crawler can follow.
+         *
+         * @static 
+         */ 
+        public static function setMaxRedirects($maxRedirects)
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->setMaxRedirects($maxRedirects);
+        }
+                    /**
+         * Returns the maximum number of redirects that crawler can follow.
+         *
+         * @return int 
+         * @static 
+         */ 
+        public static function getMaxRedirects()
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->getMaxRedirects();
+        }
+                    /**
+         * Sets the insulated flag.
+         *
+         * @throws \RuntimeException When Symfony Process Component is not installed
+         * @static 
+         */ 
+        public static function insulate($insulated = true)
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->insulate($insulated);
+        }
+                    /**
+         * Sets server parameters.
+         *
+         * @static 
+         */ 
+        public static function setServerParameters($server)
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->setServerParameters($server);
+        }
+                    /**
+         * Sets single server parameter.
+         *
+         * @static 
+         */ 
+        public static function setServerParameter($key, $value)
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->setServerParameter($key, $value);
+        }
+                    /**
+         * Gets single server parameter for specified key.
+         *
+         * @param mixed $default A default value when key is undefined
+         * @return mixed 
+         * @static 
+         */ 
+        public static function getServerParameter($key, $default = '')
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->getServerParameter($key, $default);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function xmlHttpRequest($method, $uri, $parameters = [], $files = [], $server = [], $content = null, $changeHistory = true)
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->xmlHttpRequest($method, $uri, $parameters, $files, $server, $content, $changeHistory);
+        }
+                    /**
+         * Converts the request parameters into a JSON string and uses it as request content.
+         *
+         * @static 
+         */ 
+        public static function jsonRequest($method, $uri, $parameters = [], $server = [], $changeHistory = true)
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->jsonRequest($method, $uri, $parameters, $server, $changeHistory);
+        }
+                    /**
+         * Returns the History instance.
+         *
+         * @return \Symfony\Component\BrowserKit\History 
+         * @static 
+         */ 
+        public static function getHistory()
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->getHistory();
+        }
+                    /**
+         * Returns the CookieJar instance.
+         *
+         * @return \Symfony\Component\BrowserKit\CookieJar 
+         * @static 
+         */ 
+        public static function getCookieJar()
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->getCookieJar();
+        }
+                    /**
+         * Returns the current Crawler instance.
+         *
+         * @return \Symfony\Component\BrowserKit\Crawler 
+         * @static 
+         */ 
+        public static function getCrawler()
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->getCrawler();
+        }
+                    /**
+         * Returns the current BrowserKit Response instance.
+         *
+         * @return \Response 
+         * @static 
+         */ 
+        public static function getInternalResponse()
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->getInternalResponse();
+        }
+                    /**
+         * Returns the current origin response instance.
+         * 
+         * The origin response is the response instance that is returned
+         * by the code that handles requests.
+         *
+         * @return object 
+         * @see doRequest()
+         * @static 
+         */ 
+        public static function getResponse()
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->getResponse();
+        }
+                    /**
+         * Returns the current BrowserKit Request instance.
+         *
+         * @return \Request 
+         * @static 
+         */ 
+        public static function getInternalRequest()
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->getInternalRequest();
+        }
+                    /**
+         * Returns the current origin Request instance.
+         * 
+         * The origin request is the request instance that is sent
+         * to the code that handles requests.
+         *
+         * @return object 
+         * @see doRequest()
+         * @static 
+         */ 
+        public static function getRequest()
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->getRequest();
+        }
+                    /**
+         * Clicks on a given link.
+         *
+         * @return \Symfony\Component\BrowserKit\Crawler 
+         * @static 
+         */ 
+        public static function click($link)
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->click($link);
+        }
+                    /**
+         * Clicks the first link (or clickable image) that contains the given text.
+         *
+         * @param string $linkText The text of the link or the alt attribute of the clickable image
+         * @static 
+         */ 
+        public static function clickLink($linkText)
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->clickLink($linkText);
+        }
+                    /**
+         * Submits a form.
+         *
+         * @param array $values An array of form field values
+         * @param array $serverParameters An array of server parameters
+         * @return \Symfony\Component\BrowserKit\Crawler 
+         * @static 
+         */ 
+        public static function submit($form, $values = [], $serverParameters = [])
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->submit($form, $values, $serverParameters);
+        }
+                    /**
+         * Finds the first form that contains a button with the given content and
+         * uses it to submit the given form field values.
+         *
+         * @param string $button The text content, id, value or name of the form <button> or <input type="submit">
+         * @param array $fieldValues Use this syntax: ['my_form[name]' => '...', 'my_form[email]' => '...']
+         * @param string $method The HTTP method used to submit the form
+         * @param array $serverParameters These values override the ones stored in $_SERVER (HTTP headers must include an HTTP_ prefix as PHP does)
+         * @static 
+         */ 
+        public static function submitForm($button, $fieldValues = [], $method = 'POST', $serverParameters = [])
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->submitForm($button, $fieldValues, $method, $serverParameters);
+        }
+                    /**
+         * Calls a URI.
+         *
+         * @param string $method The request method
+         * @param string $uri The URI to fetch
+         * @param array $parameters The Request parameters
+         * @param array $files The files
+         * @param array $server The server parameters (HTTP headers are referenced with an HTTP_ prefix as PHP does)
+         * @param string $content The raw body data
+         * @param bool $changeHistory Whether to update the history or not (only used internally for back(), forward(), and reload())
+         * @return \Symfony\Component\BrowserKit\Crawler 
+         * @static 
+         */ 
+        public static function request($method, $uri, $parameters = [], $files = [], $server = [], $content = null, $changeHistory = true)
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->request($method, $uri, $parameters, $files, $server, $content, $changeHistory);
+        }
+                    /**
+         * Goes back in the browser history.
+         *
+         * @return \Symfony\Component\BrowserKit\Crawler 
+         * @static 
+         */ 
+        public static function back()
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->back();
+        }
+                    /**
+         * Goes forward in the browser history.
+         *
+         * @return \Symfony\Component\BrowserKit\Crawler 
+         * @static 
+         */ 
+        public static function forward()
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->forward();
+        }
+                    /**
+         * Reloads the current browser.
+         *
+         * @return \Symfony\Component\BrowserKit\Crawler 
+         * @static 
+         */ 
+        public static function reload()
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->reload();
+        }
+                    /**
+         * Follow redirects?
+         *
+         * @return \Symfony\Component\BrowserKit\Crawler 
+         * @throws \LogicException If request was not a redirect
+         * @static 
+         */ 
+        public static function followRedirect()
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->followRedirect();
+        }
+                    /**
+         * Restarts the client.
+         * 
+         * It flushes history and all cookies.
+         *
+         * @static 
+         */ 
+        public static function restart()
+        {            //Method inherited from \Symfony\Component\BrowserKit\AbstractBrowser         
+                        /** @var \Goutte\Client $instance */
+                        return $instance->restart();
         }
          
     }
@@ -16383,6 +17161,35 @@
         public static function emailVerification()
         {
                         return \Illuminate\Routing\Router::emailVerification();
+        }
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class Route {
+                    /**
+         * 
+         *
+         * @see \Spatie\Permission\PermissionServiceProvider::registerMacroHelpers()
+         * @param mixed $roles
+         * @static 
+         */ 
+        public static function role($roles = [])
+        {
+                        return \Illuminate\Routing\Route::role($roles);
+        }
+                    /**
+         * 
+         *
+         * @see \Spatie\Permission\PermissionServiceProvider::registerMacroHelpers()
+         * @param mixed $permissions
+         * @static 
+         */ 
+        public static function permission($permissions = [])
+        {
+                        return \Illuminate\Routing\Route::permission($permissions);
         }
          
     }
@@ -19536,7 +20343,9 @@ namespace  {
             class JsonLd extends \Artesaos\SEOTools\Facades\JsonLd {}
             class JsonLdMulti extends \Artesaos\SEOTools\Facades\JsonLdMulti {}
             class SEO extends \Artesaos\SEOTools\Facades\SEOTools {}
+            class Alert extends \RealRashid\SweetAlert\Facades\Alert {}
             class Flare extends \Facade\Ignition\Facades\Flare {}
+            class Goutte extends \Weidner\Goutte\GoutteFacade {}
             class DataTables extends \Yajra\DataTables\Facades\DataTables {}
      
 }
