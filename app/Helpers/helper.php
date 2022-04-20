@@ -57,7 +57,7 @@ function getChannelCard($data = [],$average = 0){
         }else{
             $class = 'card__rate--red';
         }
-        $html.="<span class='card__rate $class'>$average</span>";
+//        $html.="<span class='card__rate $class'>$average</span>";
     }
     $html.='<a href="'.route('channel.details',['slug'=>$data->slug]).'" class="card__play">
                                 <i class="icon ion-ios-play"></i>
