@@ -26,11 +26,16 @@ class ChannelController extends Controller
 
     public function channelCategory($slug)
     {
+        $channelCategory = ChannelCategory::where('slug',$slug)->first();
+        if (empty($channelCategory)){
+            return redirect()->back();
+        }
+        setCms($channelCategory);
         $channels = Channel::whereHas('channelCategories',function ($q) use ($slug){
             $q->where('slug',$slug);
             $q->where('status','Active');
         })->where('status','Active')->paginate(18);
-        $channelCategory = ChannelCategory::where('slug',$slug)->first();
+
         return view('frontend.channel_category')
             ->with([
                 'channels'=>$channels,
@@ -40,6 +45,8 @@ class ChannelController extends Controller
 
     public function liveTv()
     {
+        $cms = getCms(request()->segment(1));
+        setCms($cms);
         $channelCategory = ChannelCategory::where('status','Active')->orderByDesc('created_at')->get();
         return view('frontend.live-tv')
             ->with([

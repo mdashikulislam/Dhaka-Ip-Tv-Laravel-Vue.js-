@@ -94,9 +94,9 @@ function getCms($url, $where_array = []){
     $row =  \App\Models\Cms::where('url', '=', $url)->first();
 
     $data = new stdClass();
-    $data->seo_title = $row ? $row->seo_title : '';
-    $data->seo_keyword  = $row ? $row->seo_keyword : '';
-    $data->seo_description     = $row ? $row->seo_description : '';
+    $data->seo_title = $row ? $row->seo_title : getenv('APP_NAME');
+    $data->seo_keyword  = $row ? $row->seo_keyword : getenv('APP_NAME');
+    $data->seo_description     = $row ? $row->seo_description : getenv('APP_NAME');
 
     if (!empty($row) && !empty($where_array)){
         foreach ($where_array as $k => $d){

@@ -13,7 +13,6 @@ class HomeController extends Controller
     {
         $cms = getCms('/');
         setCms($cms);
-
         $channelCategory = ChannelCategory::where('status','Active')->where('homepage','Yes')->orderByDesc('created_at')->get();
         return view('frontend.home')
             ->with([
@@ -36,6 +35,8 @@ class HomeController extends Controller
 
     public function contactUs()
     {
+        $cms = getCms(\request()->segment(1));
+        setCms($cms);
         return view('frontend.contact');
     }
 
@@ -59,6 +60,8 @@ class HomeController extends Controller
 
     public function aboutUs()
     {
+        $cms = getCms(\request()->segment(1));
+        setCms($cms);
         return view('frontend.about');
     }
 }
