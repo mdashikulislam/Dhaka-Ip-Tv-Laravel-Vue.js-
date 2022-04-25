@@ -30,3 +30,5 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+//Sitemap
+Route::get('sitemap.xml',[\App\Http\Controllers\SitemapController::class,'index'])->name('sitemap');
