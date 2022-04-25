@@ -1,6 +1,7 @@
 @extends('admin.layouts.app')
 @section('content-title')
     Channel List
+    <a href="{{route('channel.create')}}" class="btn btn-success"><i class="fa fa-plus fa-fw"></i>Create Channel</a>
 @endsection
 @section('content')
     <div class="row">
