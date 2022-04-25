@@ -46,5 +46,12 @@ class CmsSeeder extends Seeder
             'seo_description'=>'About Us',
             'seo_keyword'=>'About Us',
         ]);
+        Cms::firstOrCreate( [
+            'name'=>'Search',
+            'url'=>'search',
+            'seo_title'=>'%keyword% - Tv Channel Search %page%',
+            'seo_description'=>'%keyword% - Tv Channel Search %page%',
+            'seo_keyword'=>'%keyword% - Tv Channel Search %page%'
+        ]);
     }
 }

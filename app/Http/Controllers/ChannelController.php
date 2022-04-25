@@ -14,6 +14,7 @@ class ChannelController extends Controller
         if (empty($channel)){
             abort(404);
         }
+        setCms($channel);
 //        $reviews = Review::where('post_id',$channel->id)->orderByDesc('created_at')->get();
         $otherChannel = Channel::where('id','!=',$channel->id)->limit(24)->inRandomOrder()->get();
         return view('frontend.channel-details')
@@ -30,12 +31,20 @@ class ChannelController extends Controller
         if (empty($channelCategory)){
             return redirect()->back();
         }
-        setCms($channelCategory);
         $channels = Channel::whereHas('channelCategories',function ($q) use ($slug){
             $q->where('slug',$slug);
             $q->where('status','Active');
         })->where('status','Active')->paginate(18);
-
+        if (request()->page){
+            $seo = [
+                'seo_title'=>$channelCategory->seo_title.' - page '.request()->page,
+                'seo_description'=>$channelCategory->seo_description.' - page '.request()->page,
+                'seo_keyword'=>$channelCategory->seo_keyword,
+            ];
+            setCms(json_decode(json_encode($seo)));
+        }else{
+            setCms($channelCategory);
+        }
         return view('frontend.channel_category')
             ->with([
                 'channels'=>$channels,

@@ -26,7 +26,12 @@ class HomeController extends Controller
         if (!empty($request->keyword)){
             $channels = $channels->where('title','LIKE',"%$request->keyword%");
         }
-        $channels = $channels->paginate(24);
+        $channels = $channels->paginate(18);
+        $cms = getCms('search',[
+            'keyword'=>ucfirst($request->keyword),
+            'page'=>$request->page ? ' - page '.$request->page :''
+        ]);
+        setCms($cms);
         return view('frontend.search')
             ->with([
                 'channels'=>$channels
