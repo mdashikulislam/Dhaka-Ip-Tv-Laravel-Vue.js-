@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="{{asset('backend/plugins/daterangepicker/daterangepicker.css?t='.time())}}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{asset('backend/plugins/summernote/summernote-bs4.min.css?t='.time())}}">
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Favicons -->
     <link rel="icon" type="image/png" href="{{asset('frontend/icon/favicon-32x32.png')}}" sizes="32x32">
     <link rel="apple-touch-icon" href="{{asset('frontend/icon/favicon-32x32.png')}}">
@@ -100,7 +100,7 @@
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <li class="nav-item @if(in_array($prefix,['admin/channel'])) menu-open @endif">
+                    <li class="nav-item @if(in_array($prefix,['admin/channel','admin/channel-category'])) menu-open @endif">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-edit"></i>
                             <p>
@@ -110,7 +110,7 @@
                         </a>
                         <ul class="nav nav-treeview" >
                             <li class="nav-item">
-                                <a href="pages/forms/general.html" class="nav-link">
+                                <a href="{{route('channel.category.index')}}" class="nav-link @if($prefix == 'admin/channel-category') active @endif ">
                                     <i class="far fa-circle nav-icon text-danger"></i>
                                     <p>Channel Category</p>
                                 </a>
@@ -196,3 +196,4 @@
 @stack('js')
 </body>
 </html>
+@include('sweetalert::alert')

@@ -57,6 +57,7 @@ class ChannelController extends Controller implements BesicCRUD
         if ($channel->save()){
             $channel->channelCategories()->sync(!empty($request->channel_type) ? $request->channel_type :[]);
         }
+        toast('Channel create successfully','success');
         return redirect()->route('channel.index');
     }
     private function extracted(Request $request,Channel $channel){
@@ -91,6 +92,7 @@ class ChannelController extends Controller implements BesicCRUD
     {
         $channel = Channel::with('channelCategories')->where('id',$id)->first();
         if (empty($channel)){
+            toast('Channel Not found','error');
             return  redirect()->route('channel.index');
         }
         return view('admin.channel.edit')
@@ -109,6 +111,7 @@ class ChannelController extends Controller implements BesicCRUD
         if ($channel->save()){
             $channel->channelCategories()->sync(!empty($request->channel_type) ? $request->channel_type :[]);
         }
+        toast('Category update successfully','success');
         return redirect()->route('channel.index');
     }
 
