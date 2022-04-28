@@ -1,6 +1,7 @@
 @extends('admin.layouts.app')
 @section('content-title')
     Edit Channel : {{$channel->title}}
+    <a href="{{route('channel.index')}}" class="btn btn-success"><i class="fa fa-list fa-fw"></i>Channel List</a>
 @endsection
 @section('content')
     <div class="row">

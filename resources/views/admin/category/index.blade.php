@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 @section('content-title')
-    Channel List
-    <a href="{{route('channel.create')}}" class="btn btn-success"><i class="fa fa-plus fa-fw"></i>Create Channel</a>
+    Channel Category
+    <a href="{{route('channel.category.create')}}" class="btn btn-success"><i class="fa fa-plus fa-fw"></i>Create Category</a>
 @endsection
 @section('content')
     <div class="row">
@@ -13,9 +13,10 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Image</th>
                                 <th>Name</th>
+                                <th>Slug</th>
                                 <th>Status</th>
+                                <th>Homepage</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -56,25 +57,29 @@
             responsive:true,
             "ordering": false,
             ajax: {
-                url: "{{ route('channel.index') }}",
+                url: "{{ route('channel.category.index') }}",
             },
             columns: [
                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
 
                 {
-                    data: 'image',
-                    name: 'image',
-                    orderable: false,
+                    data: 'name',
+                    name: 'name',
                     defaultContent: ""
                 },
                 {
-                    data: 'title',
-                    name: 'title',
+                    data: 'slug',
+                    name: 'slug',
                     defaultContent: ""
                 },
                 {
                     data: 'status',
                     name: 'status',
+                    defaultContent: ""
+                },
+                {
+                    data: 'homepage',
+                    name: 'homepage',
                     defaultContent: ""
                 },
                 {
@@ -84,6 +89,22 @@
                     defaultContent: ""
                 }
             ]
+        });
+        $(document).on('click','.delete',function (e){
+           e.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Are you want to delete this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(this).parent('div').children('form').submit();
+                }
+            })
         });
     </script>
 @endpush

@@ -26,7 +26,9 @@ Route::get('about-us',[\App\Http\Controllers\HomeController::class,'aboutUs'])->
 
 Route::post('review',[\App\Http\Controllers\UserController::class,'reviewSend'])->name('review.send')->middleware('auth');
 
-Auth::routes();
+Auth::routes(['register' => false]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+//Sitemap
+Route::get('sitemap.xml',[\App\Http\Controllers\SitemapController::class,'index'])->name('sitemap');

@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Cms extends Model
 {
     use HasFactory;
+    protected $fillable = ['name','url','seo_title','seo_keyword','seo_description'];
 }

@@ -24,6 +24,7 @@
     {!! SEOMeta::generate() !!}
     {!! OpenGraph::generate() !!}
     {!! Twitter::generate() !!}
+    {!! JsonLd::generate() !!}
 </head>
 <body class="body">
 @php
