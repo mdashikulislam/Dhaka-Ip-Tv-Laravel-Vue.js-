@@ -49,7 +49,7 @@ class ChannelController extends Controller implements BesicCRUD
            'title'=>['required','max:255'],
            'slug'=>['required','max:255','unique:channels'],
            'media_url'=>['required','max:255'],
-           'description'=>['required','max:255'],
+           'description'=>['required'],
            'logo_type'=>['required']
         ]);
         $channel = new Channel();
