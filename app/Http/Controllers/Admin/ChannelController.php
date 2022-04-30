@@ -18,7 +18,7 @@ class ChannelController extends Controller implements BesicCRUD
             return DataTables::of($channels)
                 ->addColumn('action', function($data){
                     $html = '<div class="btn-group" role="group" aria-label="Basic example">';
-                    $html .='<a target="_blank" href="'.route('channel.details',['slug'=>$data->slug]).'" class="btn btn-info"><i class="fa fa-eye"></i></a>';
+                    $html .='<a target="_blank" href="'.route('channel.details',['slug'=>$data->slug]).'" class="btn btn-warning text-white"><i class="fa fa-eye"></i></a>';
                     $html .='<a href="'.route('channel.edit',['id'=>$data->id]).'" class="btn btn-info edit"><i class="fa fa-edit"></i></a>';
                     $html .='<a href="#" class="btn btn-danger delete"><i class="fa fa-trash"></i></a>';
                     $html .= '</div>';
