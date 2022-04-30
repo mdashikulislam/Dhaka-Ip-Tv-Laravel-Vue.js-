@@ -13,7 +13,7 @@
                     <div class="card card--details" style="margin-bottom: 30px;">
                         <div class="row">
                             <!-- card cover -->
-                            <div class="col-lg-3">
+                            <div class="col-lg-3 col-md-3 col-12">
                                 <div class="card__cover">
                                     @if($channel->logo_type == 'Url')
                                         <img src="{{$channel->preview_url}}" alt="{{$channel->title}}">
@@ -22,9 +22,8 @@
                                     @endif
                                     {!! ratingShow($channel->ratings->avg('rating')) !!}
                                 </div>
-
                             </div>
-                            <div class="col-lg-9">
+                            <div class="col-lg-9 col-md-9 col-12">
                                 <div class="card__description">
                                     {{strip_tags($channel->description)}}
                                 </div>
@@ -34,7 +33,7 @@
                 </div>
                 <!-- end content -->
                 <!-- player -->
-                <div class="col-12 col-xl-12">
+                <div class="col-12">
                     <video
                         id="my-video"
                         class="video-js vjs-big-play-centered vjs-fill"
