@@ -8,14 +8,12 @@
                 <div class="col-12">
                     <h1 class="section__title section__title--mb">| {{$channel->title}}</h1>
                 </div>
-                <!-- end title -->
-
                 <!-- content -->
-                <div class="col-12 col-lg-3 col-md-3 col-xl-3">
-                    <div class="card card--details">
+                <div class="col-12">
+                    <div class="card card--details" style="margin-bottom: 30px;">
                         <div class="row">
                             <!-- card cover -->
-                            <div class="col-12">
+                            <div class="col-lg-3">
                                 <div class="card__cover">
                                     @if($channel->logo_type == 'Url')
                                         <img src="{{$channel->preview_url}}" alt="{{$channel->title}}">
@@ -24,6 +22,9 @@
                                     @endif
                                     {!! ratingShow($channel->ratings->avg('rating')) !!}
                                 </div>
+
+                            </div>
+                            <div class="col-lg-9">
                                 <div class="card__description">
                                     {{strip_tags($channel->description)}}
                                 </div>
@@ -33,7 +34,7 @@
                 </div>
                 <!-- end content -->
                 <!-- player -->
-                <div class="col-12 col-xl-9" style="min-height: 350px">
+                <div class="col-12 col-xl-12">
                     <video
                         id="my-video"
                         class="video-js vjs-big-play-centered vjs-fill"
@@ -179,7 +180,7 @@
     <script>
         var src = '{{$channel->media_url}}';
 
-        var myPlayer = videojs('my-video');
+        var myPlayer = videojs('my-video',{fluid: true});
         myPlayer.src({src:src,type:'application/x-mpegURL'})
 
         {{--UrlExists('{{$channel->media_url}}', function(status){--}}
