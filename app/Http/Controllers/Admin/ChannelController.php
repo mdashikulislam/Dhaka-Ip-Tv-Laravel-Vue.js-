@@ -14,7 +14,7 @@ class ChannelController extends Controller implements BesicCRUD
     public function index()
     {
         if (\request()->ajax()){
-            $channels = Channel::with('channelCategories');
+            $channels = Channel::with('channelCategories')->orderByDesc('created_at');
             return DataTables::of($channels)
                 ->addColumn('action', function($data){
                     $html = '<div class="btn-group" role="group" aria-label="Basic example">';

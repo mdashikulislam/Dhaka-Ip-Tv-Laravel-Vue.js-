@@ -11,6 +11,7 @@
                 <div class="card-body">
                 <form role="form" action="{{route('channel.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
+                    @method('POST')
                         <div class="form-group">
                             <label for="title">Channel Title :</label>
                             <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" placeholder="Channel Title" value="{{old('title')}}">

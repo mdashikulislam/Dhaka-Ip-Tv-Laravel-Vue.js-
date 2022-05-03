@@ -16,7 +16,7 @@ class ChannelController extends Controller
         }
         setCms($channel);
 //        $reviews = Review::where('post_id',$channel->id)->orderByDesc('created_at')->get();
-        $otherChannel = Channel::where('id','!=',$channel->id)->limit(24)->inRandomOrder()->get();
+        $otherChannel = Channel::where('id','!=',$channel->id)->where('status','Active')->limit(24)->inRandomOrder()->get();
         return view('frontend.channel-details')
             ->with([
                 'channel'=>$channel,
