@@ -9,8 +9,8 @@ class SitemapController extends Controller
 {
     public function index()
     {
-        $channels = Channel::select('slug','updated_at')->get();
-        $channelCategories = ChannelCategory::select('slug','updated_at')->get();
+        $channels = Channel::select('slug','updated_at')->where('status','Active')->get();
+        $channelCategories = ChannelCategory::select('slug','updated_at')->where('status','Active')->get();
         return \response()->view('sitemap.index',compact('channels','channelCategories'))->header('Content-Type', 'application/xml; charset=utf-8');
     }
 }

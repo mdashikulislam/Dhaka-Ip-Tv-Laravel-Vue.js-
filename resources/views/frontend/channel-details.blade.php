@@ -38,8 +38,6 @@
                         id="my-video"
                         class="video-js vjs-big-play-centered vjs-fill"
                         controls
-                        autoplay
-                        muted
                         preload="auto"
                         poster="{{$channel->logo_type == 'Url' ? $channel->preview_url : \Illuminate\Support\Facades\Storage::disk('local')->url($channel->preview_file)}}"
                         data-setup="{}">
@@ -181,7 +179,7 @@
 
         var myPlayer = videojs('my-video',{fluid: true});
         myPlayer.src({src:src,type:'application/x-mpegURL'})
-
+        myPlayer.play();
         {{--UrlExists('{{$channel->media_url}}', function(status){--}}
         {{--    console.log(status)--}}
         {{--    if(status === 200){--}}
