@@ -194,7 +194,26 @@
                 }
             });
             $(document).on('change','#preview_file',function (){
-                console.log('ok');
+                $('.box-img').children('img:last-child').css('opacity',1);
+                var val = $(this).val();
+                if (!val){
+                    $('#checkImage').attr('src','https://via.placeholder.com/224.png');
+                    setTimeout(function (){
+                        $('.box-img').children('img:last-child').css('opacity',0);
+                    },300);
+
+                }else{
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var urll = e.target.result;
+
+                        $('#checkImage').attr('src', urll);
+                        setTimeout(function (){
+                            $('.box-img').children('img:last-child').css('opacity',0);
+                        },300);
+                    };
+                    reader.readAsDataURL(this.files[0]);
+                }
             });
             $(document).on('change keypress keyup blur','#title',function (){
                 var text = $(this).val();
