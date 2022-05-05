@@ -128,7 +128,7 @@
                         poster="https://via.placeholder.com/230x120.png"
                         data-setup="{}">
                         {{--     Default media url :  https://d2zihajmogu5jn.cloudfront.net/advanced-fmp4/master.m3u8     --}}
-                        <source src="https://d2zihajmogu5jn.cloudfront.net/advanced-fmp4/master.m3u8" type="application/x-mpegURL" />
+                        <source src="{{$channel->media_url ? :'https://d2zihajmogu5jn.cloudfront.net/advanced-fmp4/master.m3u8'}}" type="application/x-mpegURL" />
                         <p class="vjs-no-js">
                             To view this video please enable JavaScript, and consider upgrading to a
                             web browser that
@@ -189,6 +189,29 @@
                         ' </div>');
                 }
             });
+
+            $(document).on('change','#preview_file',function (){
+                $('.box-img').children('img:last-child').css('opacity',1);
+                var val = $(this).val();
+                if (!val){
+                    $('#checkImage').attr('src','https://via.placeholder.com/224.png');
+                    setTimeout(function (){
+                        $('.box-img').children('img:last-child').css('opacity',0);
+                    },300);
+
+                }else{
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var urll = e.target.result;
+
+                        $('#checkImage').attr('src', urll);
+                        setTimeout(function (){
+                            $('.box-img').children('img:last-child').css('opacity',0);
+                        },300);
+                    };
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
             $(document).on('blur','#preview_url',function (){
                 $('.box-img').children('img:last-child').css('opacity',1);
                 var val = $(this).val();
@@ -205,9 +228,7 @@
                     },300);
                 }
             });
-            $(document).on('change','#preview_file',function (){
-                console.log('ok');
-            });
+
             $(document).on('change keypress keyup blur','#title',function (){
                 var text = $(this).val();
                 text = text.toLowerCase();
