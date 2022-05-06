@@ -26,6 +26,8 @@
     {!! Twitter::generate() !!}
     {!! JsonLd::generate() !!}
 
+    <meta name="google-site-verification" content="jafgsa-MWMIc5iTtUVyQmlD3ivzKxglrpifQ3_uIx8k" />
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T3QTC48DHS"></script>
     <script>
