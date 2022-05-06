@@ -45,7 +45,6 @@
         })(window,document,'script','dataLayer','GTM-WV8XVVH');</script>
     <!-- End Google Tag Manager -->
 
-
     @stack('css')
 </head>
 <body class="body">
