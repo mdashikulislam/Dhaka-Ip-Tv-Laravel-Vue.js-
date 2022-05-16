@@ -11,6 +11,8 @@ class HomeController extends Controller
 {
     public function index()
     {
+        $cms = getCms('/');
+        setCms($cms);
         $channelCategory = ChannelCategory::where('status','Active')->where('homepage','Yes')->orderByDesc('created_at')->get();
         return view('frontend.home')
             ->with([
@@ -24,7 +26,12 @@ class HomeController extends Controller
         if (!empty($request->keyword)){
             $channels = $channels->where('title','LIKE',"%$request->keyword%");
         }
-        $channels = $channels->paginate(24);
+        $channels = $channels->paginate(18);
+        $cms = getCms('search',[
+            'keyword'=>ucfirst($request->keyword),
+            'page'=>$request->page ? ' - page '.$request->page :''
+        ]);
+        setCms($cms);
         return view('frontend.search')
             ->with([
                 'channels'=>$channels
@@ -33,6 +40,8 @@ class HomeController extends Controller
 
     public function contactUs()
     {
+        $cms = getCms(\request()->segment(1));
+        setCms($cms);
         return view('frontend.contact');
     }
 
@@ -56,6 +65,8 @@ class HomeController extends Controller
 
     public function aboutUs()
     {
+        $cms = getCms(\request()->segment(1));
+        setCms($cms);
         return view('frontend.about');
     }
 }

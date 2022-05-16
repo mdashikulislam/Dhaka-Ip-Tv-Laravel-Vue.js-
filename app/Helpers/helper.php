@@ -1,4 +1,8 @@
 <?php
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\TwitterCard;
+use Artesaos\SEOTools\Facades\JsonLd;
 
 function channelTypeDropdown($selected = []){
     $categories = \App\Models\ChannelCategory::where('status','Active')->get();
@@ -90,9 +94,9 @@ function getCms($url, $where_array = []){
     $row =  \App\Models\Cms::where('url', '=', $url)->first();
 
     $data = new stdClass();
-    $data->seo_title = $row ? $row->seo_title : '';
-    $data->seo_keyword  = $row ? $row->seo_keyword : '';
-    $data->seo_description     = $row ? $row->seo_description : '';
+    $data->seo_title = $row ? $row->seo_title : getenv('APP_NAME');
+    $data->seo_keyword  = $row ? $row->seo_keyword : getenv('APP_NAME');
+    $data->seo_description     = $row ? $row->seo_description : getenv('APP_NAME');
 
     if (!empty($row) && !empty($where_array)){
         foreach ($where_array as $k => $d){
@@ -102,4 +106,26 @@ function getCms($url, $where_array = []){
         }
     }
     return $data;
+}
+function setCms($cms){
+    if (empty($cms)){
+        return;
+    }
+    //Seo meta
+    SEOMeta::setTitle($cms->seo_title)
+        ->setKeywords($cms->seo_keyword)
+        ->setDescription($cms->seo_description);
+    //Open Graph
+    OpenGraph::setTitle($cms->seo_title.' - '.getenv('APP_NAME'))
+        ->setDescription($cms->seo_description)
+        ->setUrl(\url()->full())
+        ->addProperty('locale', 'pt-br')
+        ->addProperty('locale:alternate', ['pt-pt', 'en-us'])
+        ->addImage(asset('frontend/img/logo.svg'),['height' => 300, 'width' => 300]);
+    //Twitter Card
+    TwitterCard::setTitle($cms->seo_title.' - '.getenv('APP_NAME'));
+    //Json Ld
+    JsonLd::setTitle($cms->seo_title.' - '.getenv('APP_NAME'))
+        ->setDescription($cms->seo_description)
+        ->addImage(asset('frontend/img/logo.svg'));
 }

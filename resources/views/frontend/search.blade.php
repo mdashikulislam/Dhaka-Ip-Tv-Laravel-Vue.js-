@@ -10,7 +10,7 @@
                     </div>
                 @empty
                 @endforelse
-                {{$channels->links('vendor.pagination.custom')}}
+                {{$channels->appends(request()->input())->links('vendor.pagination.custom')}}
             </div>
         </div>
     </div>

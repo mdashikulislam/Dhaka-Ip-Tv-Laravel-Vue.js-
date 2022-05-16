@@ -14,8 +14,9 @@ class ChannelController extends Controller
         if (empty($channel)){
             abort(404);
         }
+        setCms($channel);
 //        $reviews = Review::where('post_id',$channel->id)->orderByDesc('created_at')->get();
-        $otherChannel = Channel::where('id','!=',$channel->id)->limit(24)->inRandomOrder()->get();
+        $otherChannel = Channel::where('id','!=',$channel->id)->where('status','Active')->limit(24)->inRandomOrder()->get();
         return view('frontend.channel-details')
             ->with([
                 'channel'=>$channel,
@@ -26,11 +27,24 @@ class ChannelController extends Controller
 
     public function channelCategory($slug)
     {
+        $channelCategory = ChannelCategory::where('slug',$slug)->first();
+        if (empty($channelCategory)){
+            return redirect()->back();
+        }
         $channels = Channel::whereHas('channelCategories',function ($q) use ($slug){
             $q->where('slug',$slug);
             $q->where('status','Active');
         })->where('status','Active')->paginate(18);
-        $channelCategory = ChannelCategory::where('slug',$slug)->first();
+        if (request()->page){
+            $seo = [
+                'seo_title'=>$channelCategory->seo_title.' - page '.request()->page,
+                'seo_description'=>$channelCategory->seo_description.' - page '.request()->page,
+                'seo_keyword'=>$channelCategory->seo_keyword,
+            ];
+            setCms(json_decode(json_encode($seo)));
+        }else{
+            setCms($channelCategory);
+        }
         return view('frontend.channel_category')
             ->with([
                 'channels'=>$channels,
@@ -40,6 +54,8 @@ class ChannelController extends Controller
 
     public function liveTv()
     {
+        $cms = getCms(request()->segment(1));
+        setCms($cms);
         $channelCategory = ChannelCategory::where('status','Active')->orderByDesc('created_at')->get();
         return view('frontend.live-tv')
             ->with([
