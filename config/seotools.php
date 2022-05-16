@@ -39,7 +39,7 @@ return [
             'title'       => getenv('APP_NAME'), // set false to total remove
             'description' => getenv('APP_NAME'), // set false to total remove
             'url'         => false, // Set null for using Url::current(), set false to total remove
-            'type'        => false,
+            'type'        => 'articles',
             'site_name'   => false,
             'images'      => [],
         ],
