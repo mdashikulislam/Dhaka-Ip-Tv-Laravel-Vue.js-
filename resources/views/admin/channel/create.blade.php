@@ -1,6 +1,7 @@
 @extends('admin.layouts.app')
 @section('content-title')
     Create Channel
+    <a href="{{route('channel.index')}}" class="btn btn-success"><i class="fa fa-list fa-fw"></i>Channel List</a>
 @endsection
 @section('content')
     <div class="row">
@@ -10,6 +11,7 @@
                 <div class="card-body">
                 <form role="form" action="{{route('channel.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
+                    @method('POST')
                         <div class="form-group">
                             <label for="title">Channel Title :</label>
                             <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" placeholder="Channel Title" value="{{old('title')}}">
@@ -192,7 +194,26 @@
                 }
             });
             $(document).on('change','#preview_file',function (){
-                console.log('ok');
+                $('.box-img').children('img:last-child').css('opacity',1);
+                var val = $(this).val();
+                if (!val){
+                    $('#checkImage').attr('src','https://via.placeholder.com/224.png');
+                    setTimeout(function (){
+                        $('.box-img').children('img:last-child').css('opacity',0);
+                    },300);
+
+                }else{
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        var urll = e.target.result;
+
+                        $('#checkImage').attr('src', urll);
+                        setTimeout(function (){
+                            $('.box-img').children('img:last-child').css('opacity',0);
+                        },300);
+                    };
+                    reader.readAsDataURL(this.files[0]);
+                }
             });
             $(document).on('change keypress keyup blur','#title',function (){
                 var text = $(this).val();
