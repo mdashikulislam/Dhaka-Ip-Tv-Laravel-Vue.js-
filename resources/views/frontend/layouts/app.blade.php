@@ -21,6 +21,9 @@
     <link rel="icon" type="image/png" href="{{asset('frontend/icon/favicon-32x32.png')}}" sizes="32x32">
     <link rel="apple-touch-icon" href="{{asset('frontend/icon/favicon-32x32.png')}}">
 
+    <link rel="canonical" href="{{request()->fullUrl()}}">
+
+
     {!! SEOMeta::generate() !!}
     {!! OpenGraph::generate() !!}
     {!! Twitter::generate() !!}
