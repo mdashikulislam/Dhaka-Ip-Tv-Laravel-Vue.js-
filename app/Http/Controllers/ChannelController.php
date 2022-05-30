@@ -56,7 +56,7 @@ class ChannelController extends Controller
     {
         $cms = getCms(request()->segment(1));
         setCms($cms);
-        $channelCategory = ChannelCategory::where('status','Active')->orderByDesc('created_at')->get();
+        $channelCategory = ChannelCategory::where('status','Active')->get();
         return view('frontend.live-tv')
             ->with([
                 'channelCategory'=>$channelCategory

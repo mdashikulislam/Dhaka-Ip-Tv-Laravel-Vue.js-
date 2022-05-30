@@ -13,7 +13,7 @@ class HomeController extends Controller
     {
         $cms = getCms('/');
         setCms($cms);
-        $channelCategory = ChannelCategory::where('status','Active')->where('homepage','Yes')->orderByDesc('created_at')->get();
+        $channelCategory = ChannelCategory::where('status','Active')->where('homepage','Yes')->get();
         return view('frontend.home')
             ->with([
                 'channelCategory'=>$channelCategory
