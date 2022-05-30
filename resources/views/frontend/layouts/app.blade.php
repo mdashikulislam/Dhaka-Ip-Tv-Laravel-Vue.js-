@@ -22,7 +22,8 @@
     <link rel="apple-touch-icon" href="{{asset('frontend/icon/favicon-32x32.png')}}">
 
     <link rel="canonical" href="{{request()->fullUrl()}}">
-
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8201421808374471"
+            crossorigin="anonymous"></script>
 
     {!! SEOMeta::generate() !!}
     {!! OpenGraph::generate() !!}
